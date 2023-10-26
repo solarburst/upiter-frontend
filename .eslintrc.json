@@ -1,3 +1,40 @@
 {
-  "extends": "next/core-web-vitals"
+    "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/eslint-recommended", "plugin:@typescript-eslint/recommended"],
+    "plugins": ["prettier", "@typescript-eslint", "simple-import-sort"],
+    "parser": "@typescript-eslint/parser",
+    "rules": {
+        "react/display-name": "off",
+        "no-console": "warn",
+        "indent": "off",
+        "no-trailing-spaces": "warn",
+        "no-extra-semi": "error",
+        "semi": ["error", "always"],
+        "react-hooks/exhaustive-deps": "off",
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error",
+        "import/first": "error",
+        "import/newline-after-import": "error",
+        "react/jsx-props-no-spreading": 0,
+        "prettier/prettier": [
+            "error",
+            {
+                "singleQuote": true,
+                "tabWidth": 4,
+                "printWidth": 140,
+                "semicolons": true,
+                "semi": true,
+                "endOfLine": "auto",
+                "bracketSpacing": true,
+                "indent": "off"
+            }
+        ]
+    },
+    "overrides": [
+        {
+            "files": ["src/pages/**/*"],
+            "rules": {
+                "import/no-anonymous-default-export": [2, { "allowArrowFunction": true }]
+            }
+        }
+    ]
 }
