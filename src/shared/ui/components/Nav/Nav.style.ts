@@ -10,7 +10,7 @@ export const Root = styled.div`
     height: calc(100% + 1px);
 `;
 
-export const HeaderNavItem = styled(Button)<{ selected: boolean }>`
+export const NavItem = styled(Button)<{ selected: boolean }>`
     border-radius: unset;
     background-color: transparent;
     padding: 8px;

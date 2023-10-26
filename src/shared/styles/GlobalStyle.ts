@@ -33,7 +33,6 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 24px;
     color: ${({ theme }) => theme.color.text1};
     background-color: ${({ theme }) => theme.color.bg1};
-    padding-right: calc(20px - (100vw - 100%));
   }
 
   img {

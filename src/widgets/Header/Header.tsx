@@ -1,5 +1,6 @@
 'use client';
 
+import { useIsMobile } from '@/shared/hooks';
 import { Container, UpiterLargeLogo } from '@/shared/ui';
 
 import * as S from './Header.style';
@@ -27,6 +28,9 @@ export const Header: React.FC = () => {
             href: 'qwe',
         },
     ];
+
+    const isMobile = useIsMobile();
+    console.log(isMobile);
 
     return (
         <S.Root>

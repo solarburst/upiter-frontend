@@ -2,7 +2,7 @@
 
 import styled from 'styled-components';
 
-import { HeaderActions, HeaderNav } from '@/shared/ui';
+import { HeaderActions, Nav } from '@/shared/ui';
 
 export const Root = styled.header``;
 
@@ -14,6 +14,6 @@ export const Wrapper = styled.div`
     border-bottom: 1px solid #ffffff1a;
 `;
 
-export const Navigation = styled(HeaderNav)``;
+export const Navigation = styled(Nav)``;
 
 export const Actions = styled(HeaderActions)``;
