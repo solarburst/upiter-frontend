@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export const useIsMobile = () => {
-    const MOBILE = '1200px';
+    const MOBILE = '768px';
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {

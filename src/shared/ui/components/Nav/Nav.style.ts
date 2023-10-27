@@ -4,10 +4,14 @@ import styled from 'styled-components';
 
 import { Button } from '@/shared/ui/primitives';
 
-export const Root = styled.div`
+import { RootProps } from './Nav.types';
+
+export const Root = styled.div<RootProps>`
     display: flex;
     gap: 24px;
     height: calc(100% + 1px);
+    flex-direction: ${(props) => (props.vertical ? 'column' : 'row')};
+    align-items: ${(props) => (props.vertical ? 'center' : '')};
 `;
 
 export const NavItem = styled(Button)<{ selected: boolean }>`

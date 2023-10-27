@@ -25,6 +25,7 @@ import {
     QuestionIcon,
     SbpIcon,
     SizeSelect,
+    Socials,
     // Swiper,
     TelegramColoredIcon,
     TelegramIcon,
@@ -125,6 +126,7 @@ export const UiKit: React.FC = () => {
                         },
                     ]}
                 />
+                <Socials />
             </div>
         </div>
     );

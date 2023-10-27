@@ -5,6 +5,11 @@ export interface NavItem {
     value: string;
 }
 
+export interface RootProps {
+    vertical?: boolean;
+}
+
 export interface NavProps {
     items: NavItem[];
+    vertical?: boolean;
 }

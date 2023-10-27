@@ -8,7 +8,7 @@ import { ArrowDownIcon, CheckMarkIcon } from '@/shared/ui';
 import * as S from './Dropdown.style';
 import { DropdownOption, DropdownProps } from './Dropdown.types';
 
-export const Dropdown: React.FC<DropdownProps> = ({ trigger, options, onChange, value: initialValue, position }) => {
+export const Dropdown: React.FC<DropdownProps> = ({ trigger, options, onChange, value: initialValue, position, ...props }) => {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(initialValue);
     const containerRef = useRef<HTMLUListElement>(null);
@@ -25,9 +25,9 @@ export const Dropdown: React.FC<DropdownProps> = ({ trigger, options, onChange, 
     };
 
     return (
-        <S.Root>
+        <S.Root {...props}>
             <S.Trigger open={open} onClick={() => setOpen(!open)}>
-                {value?.slice(0, 2) || trigger} {<ArrowDownIcon />}
+                {value || trigger} {<ArrowDownIcon />}
             </S.Trigger>
             <S.OptionsContainer ref={containerRef} open={open} position={position}>
                 {options.map((option) => {

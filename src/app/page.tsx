@@ -1,12 +1,13 @@
 import React from 'react';
 
-import { Header, UiKit } from '@/widgets';
+import { Footer, Header, UiKit } from '@/widgets';
 
 const Main = () => {
     return (
         <>
-            <UiKit />
             <Header />
+            <UiKit />
+            <Footer />
         </>
     );
 };

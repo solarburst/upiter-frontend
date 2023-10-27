@@ -13,6 +13,7 @@ export const Trigger = styled.button<{ open?: boolean }>`
     cursor: pointer;
     display: flex;
     align-items: center;
+    font-size: 16px;
 
     svg {
         transition: ${({ theme }) => theme.transition.default};

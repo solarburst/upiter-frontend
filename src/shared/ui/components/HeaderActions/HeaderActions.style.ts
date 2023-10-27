@@ -8,6 +8,10 @@ import { Button } from '@/shared/ui/primitives';
 export const Root = styled.div`
     display: flex;
     align-items: center;
+
+    @media screen and (max-width: 1200px) {
+        gap: 16px;
+    }
 `;
 
 export const ActionButton = styled(Button)`
