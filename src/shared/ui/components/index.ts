@@ -1,8 +1,10 @@
 export type { CategorySelectProps } from './CategorySelect';
 export { CategorySelect } from './CategorySelect';
 export { Container } from './Container';
+export { CookieBanner } from './CookieBanner';
 export type { DropdownOption, DropdownProps } from './Dropdown';
 export { Dropdown } from './Dropdown';
+export { GalleryCard } from './GalleryCard';
 export type { HeaderActionsProps } from './HeaderActions';
 export { HeaderActions } from './HeaderActions';
 export type { HeaderModalProps } from './HeaderModal';
@@ -17,4 +19,5 @@ export { Nav } from './Nav';
 export type { SizeSelectProps } from './SizeSelect';
 export { SizeSelect } from './SizeSelect';
 export { Socials } from './Socials';
+export { SocialsBanner } from './SocialsBanner';
 export { Swiper } from './Swiper';

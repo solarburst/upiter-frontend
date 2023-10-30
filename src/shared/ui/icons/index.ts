@@ -15,6 +15,7 @@ export { PhoneIcon } from './PhoneIcon';
 export { ProfileIcon } from './ProfileIcon';
 export { QuestionIcon } from './QuestionIcon';
 export { SbpIcon } from './SbpIcon';
+export { SocialsBannerIcon } from './SocialsBannerIcon';
 export { TelegramColoredIcon } from './TelegramColoredIcon';
 export { TelegramIcon } from './TelegramIcon';
 export { TiktokColoredIcon } from './TiktokColoredIcon';
