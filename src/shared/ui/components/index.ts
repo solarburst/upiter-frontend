@@ -21,3 +21,4 @@ export { SizeSelect } from './SizeSelect';
 export { Socials } from './Socials';
 export { SocialsBanner } from './SocialsBanner';
 export { Swiper } from './Swiper';
+export { UnderlinedTitle } from './UnderlinedTitle';

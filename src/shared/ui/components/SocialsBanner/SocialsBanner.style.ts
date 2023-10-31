@@ -13,7 +13,7 @@ export const Root = styled.div`
     align-items: center;
     gap: 12px;
     overflow: hidden;
-    z-index: 2;
+    z-index: 50;
 
     @media screen and (max-width: 768px) {
         bottom: 12px;

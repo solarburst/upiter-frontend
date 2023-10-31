@@ -13,6 +13,7 @@ export const Root = styled.div<{ isOpen: boolean }>`
     transform: translateX(-50%);
     border-radius: 8px;
     background-color: ${({ theme }) => theme.color.bg3};
+    z-index: 50;
 
     @media screen and (max-width: 768px) {
         width: calc(100% - 16px);

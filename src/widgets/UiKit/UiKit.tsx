@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useState } from 'react';
 
 import {
@@ -12,10 +11,10 @@ import {
     CategorySelect,
     ChatIcon,
     Checkbox,
+    Container,
     CookieBanner,
     CopyIcon,
     Dropdown,
-    GalleryCard,
     Input,
     InstagramColoredIcon,
     LabelledCheckbox,
@@ -30,7 +29,6 @@ import {
     SizeSelect,
     Socials,
     SocialsBanner,
-    Swiper,
     TelegramColoredIcon,
     TelegramIcon,
     TiktokColoredIcon,
@@ -44,14 +42,7 @@ export const UiKit: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <div
-            style={{
-                padding: '50px 100px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '20px',
-            }}
-        >
+        <Container>
             <Button onClick={() => setIsModalOpen(true)}>Click me</Button>
             <Input />
             <Checkbox />
@@ -131,28 +122,7 @@ export const UiKit: React.FC = () => {
                 <Socials />
                 <CookieBanner />
                 <SocialsBanner />
-
-                <Swiper>
-                    <Image
-                        src={`https://s3-alpha-sig.figma.com/img/de7d/6d0e/fb5610e796986766f2c2a1d514f1b88d?Expires=1699833600&Signature=ewlLA4zrvi2zQvOm68xhUbeT~kfC0yY4k4YZKVNONG6fb73rKE80ZoEEZFxEhmTKVHsesDnPi3WrPVwUtrL71GN676LT-KQLuotiLE3~sl3eH2p0zUz8ZCPxLuD8UCcHALrmIgYN7~bgTVZ-S0aOPAUV5jAHQsOa1guOreIis2~bCIzDnh25pAzQ-NLnAHC9sjB3az3-OWyMEs2qj7A2-2Pir4XgKEWa7ci4fZ9~i5yNsWXscM1TB3lWVnS7rV08j2~7CVHpJqIb9DC~a01ZW1kN3vwOSwpaaLsqSQV5Z~BsqvSdTxarYA3aqvIkDh52sCOUe138cfyu7yn7kG91YA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4`}
-                        width={384}
-                        height={384}
-                        alt={''}
-                    />
-                    <Image
-                        src={`https://s3-alpha-sig.figma.com/img/de7d/6d0e/fb5610e796986766f2c2a1d514f1b88d?Expires=1699833600&Signature=ewlLA4zrvi2zQvOm68xhUbeT~kfC0yY4k4YZKVNONG6fb73rKE80ZoEEZFxEhmTKVHsesDnPi3WrPVwUtrL71GN676LT-KQLuotiLE3~sl3eH2p0zUz8ZCPxLuD8UCcHALrmIgYN7~bgTVZ-S0aOPAUV5jAHQsOa1guOreIis2~bCIzDnh25pAzQ-NLnAHC9sjB3az3-OWyMEs2qj7A2-2Pir4XgKEWa7ci4fZ9~i5yNsWXscM1TB3lWVnS7rV08j2~7CVHpJqIb9DC~a01ZW1kN3vwOSwpaaLsqSQV5Z~BsqvSdTxarYA3aqvIkDh52sCOUe138cfyu7yn7kG91YA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4`}
-                        width={384}
-                        height={384}
-                        alt={''}
-                    />
-                    <Image
-                        src={`https://s3-alpha-sig.figma.com/img/de7d/6d0e/fb5610e796986766f2c2a1d514f1b88d?Expires=1699833600&Signature=ewlLA4zrvi2zQvOm68xhUbeT~kfC0yY4k4YZKVNONG6fb73rKE80ZoEEZFxEhmTKVHsesDnPi3WrPVwUtrL71GN676LT-KQLuotiLE3~sl3eH2p0zUz8ZCPxLuD8UCcHALrmIgYN7~bgTVZ-S0aOPAUV5jAHQsOa1guOreIis2~bCIzDnh25pAzQ-NLnAHC9sjB3az3-OWyMEs2qj7A2-2Pir4XgKEWa7ci4fZ9~i5yNsWXscM1TB3lWVnS7rV08j2~7CVHpJqIb9DC~a01ZW1kN3vwOSwpaaLsqSQV5Z~BsqvSdTxarYA3aqvIkDh52sCOUe138cfyu7yn7kG91YA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4`}
-                        width={384}
-                        height={384}
-                        alt={''}
-                    />
-                </Swiper>
             </div>
-        </div>
+        </Container>
     );
 };

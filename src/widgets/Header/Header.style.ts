@@ -48,9 +48,7 @@ export const Menu = styled(Button)`
     }
 `;
 
-export const Navigation = styled(Nav)`
-    margin-top: 24px;
-`;
+export const Navigation = styled(Nav)``;
 
 export const Modal = styled(HeaderModal)``;
 

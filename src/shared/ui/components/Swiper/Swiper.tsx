@@ -1,7 +1,7 @@
 import 'swiper/css';
 
 import { Navigation, Pagination } from 'swiper/modules';
-import { Swiper as ReactSwiper } from 'swiper/react';
+import { Swiper as ReactSwiper, SwiperSlide } from 'swiper/react';
 
 import { useUuid } from '@/shared/hooks';
 import { ArrowDownLineIcon } from '@/shared/ui';
@@ -9,7 +9,7 @@ import { ArrowDownLineIcon } from '@/shared/ui';
 import * as S from './Swiper.style';
 
 interface SwiperProps {
-    children: React.ReactNode;
+    children: React.ReactElement[];
 }
 
 export const Swiper: React.FC<SwiperProps> = ({ children }) => {
@@ -21,7 +21,7 @@ export const Swiper: React.FC<SwiperProps> = ({ children }) => {
         <S.Root>
             <ReactSwiper
                 spaceBetween={8}
-                slidesPerView="auto"
+                slidesPerView={3}
                 modules={[Navigation, Pagination]}
                 breakpoints={{
                     768: {
@@ -31,7 +31,7 @@ export const Swiper: React.FC<SwiperProps> = ({ children }) => {
                 pagination={{ clickable: true, el: `#${paginationId}` }}
                 navigation={{ prevEl: `#${prevButtonId}`, nextEl: `#${nextButtonId}` }}
             >
-                {children}
+                {children?.map((item) => <SwiperSlide key={`slider-slide-${item.key}`}>{item}</SwiperSlide>)}
             </ReactSwiper>
             <S.SwiperButton id={prevButtonId} position="left">
                 <ArrowDownLineIcon />

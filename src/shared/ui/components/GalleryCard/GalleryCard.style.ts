@@ -10,7 +10,6 @@ export const Root = styled.article`
     height: 384px;
     max-width: 384px;
     cursor: pointer;
-    width: 100%;
     display: flex;
 `;
 
@@ -19,6 +18,7 @@ export const Background = styled(Image)`
     top: 0;
     left: 0;
     width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: center;
     border-radius: 4px;

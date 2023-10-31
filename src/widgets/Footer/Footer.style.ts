@@ -4,7 +4,11 @@ import styled from 'styled-components';
 
 import { Nav, Socials } from '@/shared/ui';
 
-export const Root = styled.footer``;
+export const Root = styled.footer`
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+`;
 
 export const Wrapper = styled.div<{ isTablet: boolean }>`
     display: flex;

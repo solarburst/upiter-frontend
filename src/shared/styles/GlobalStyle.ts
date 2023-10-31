@@ -33,6 +33,8 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 24px;
     color: ${({ theme }) => theme.color.text1};
     background-color: ${({ theme }) => theme.color.bg1};
+    position: relative;
+    min-height: 100vh;
   }
 
   img {
@@ -50,6 +52,7 @@ export const GlobalStyle = createGlobalStyle`
     overflow: hidden !important;
     background-color: ${({ theme }) => `${theme.color.bg1}B4`} !important;
     transition: ${({ theme }) => theme.transition.slow};
+    z-index: 500;
   }
 
   .ReactModal__Overlay--after-open{
@@ -75,6 +78,7 @@ export const GlobalStyle = createGlobalStyle`
     gap: 24px;
     border: none !important;
     inset: 0 0 0 auto !important;
+    z-index: 500;
 
     animation: ${animation} ${({ theme }) => theme.transition.slow};
 
