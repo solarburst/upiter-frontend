@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 
-import { useIsTablet } from '@/shared/hooks';
-import { useIsMobile } from '@/shared/hooks/useIsMobile';
+import { useIsMobile, useIsTablet } from '@/shared/hooks';
 import { CloseIcon, Container, MenuIcon, UpiterLargeLogo, UpiterSmallLogo } from '@/shared/ui';
 
 import * as S from './Header.style';

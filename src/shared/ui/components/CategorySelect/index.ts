@@ -1,2 +1,2 @@
 export { CategorySelect } from './CategorySelect';
-export type { CategorySelectProps } from './CategorySelect.types';
+export type { Category, CategorySelectProps } from './CategorySelect.types';

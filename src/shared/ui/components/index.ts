@@ -1,10 +1,9 @@
-export type { CategorySelectProps } from './CategorySelect';
+export type { Category, CategorySelectProps } from './CategorySelect';
 export { CategorySelect } from './CategorySelect';
 export { Container } from './Container';
 export { CookieBanner } from './CookieBanner';
 export type { DropdownOption, DropdownProps } from './Dropdown';
 export { Dropdown } from './Dropdown';
-export { GalleryCard } from './GalleryCard';
 export type { HeaderActionsProps } from './HeaderActions';
 export { HeaderActions } from './HeaderActions';
 export type { HeaderModalProps } from './HeaderModal';

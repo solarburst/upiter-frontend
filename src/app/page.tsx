@@ -1,13 +1,14 @@
 import React from 'react';
 
-import { Footer, Gallery, Header, Title, UiKit } from '@/widgets';
+import { Catalog, Footer, Gallery, Header, Title, UiKit } from '@/widgets';
 
 const Main = () => {
     return (
         <>
             <Header />
             <Title />
-            <UiKit />
+            {/* <UiKit /> */}
+            <Catalog />
             <Gallery />
             <Footer />
         </>

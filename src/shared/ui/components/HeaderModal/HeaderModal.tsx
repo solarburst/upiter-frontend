@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import ReactModal from 'react-modal';
 
-import { useIsMobile } from '@/shared/hooks/useIsMobile';
+import { useIsMobile } from '@/shared/hooks';
 import { CloseIcon } from '@/shared/ui';
 
 import * as S from './HeaderModal.style';

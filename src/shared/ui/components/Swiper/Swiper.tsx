@@ -21,11 +21,12 @@ export const Swiper: React.FC<SwiperProps> = ({ children }) => {
         <S.Root>
             <ReactSwiper
                 spaceBetween={8}
-                slidesPerView={3}
+                slidesPerGroup={1.2}
                 modules={[Navigation, Pagination]}
                 breakpoints={{
                     768: {
-                        spaceBetween: 24,
+                        spaceBetween: 8,
+                        slidesPerView: 3,
                     },
                 }}
                 pagination={{ clickable: true, el: `#${paginationId}` }}

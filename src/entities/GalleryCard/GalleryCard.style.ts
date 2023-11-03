@@ -11,6 +11,11 @@ export const Root = styled.article`
     max-width: 384px;
     cursor: pointer;
     display: flex;
+
+    @media screen and (max-width: 768px) {
+        height: 280px;
+        max-width: 280px;
+    }
 `;
 
 export const Background = styled(Image)`

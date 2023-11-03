@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import * as S from './CategorySelect.style';
 import { Category, CategorySelectProps } from './CategorySelect.types';
 
-export const CategorySelect: React.FC<CategorySelectProps> = ({ categories }) => {
+export const CategorySelect: React.FC<CategorySelectProps> = ({ categories, ...props }) => {
     const [selectedCategory, setSelectedCateogry] = useState(categories[0]);
 
     useEffect(() => {
@@ -16,7 +16,7 @@ export const CategorySelect: React.FC<CategorySelectProps> = ({ categories }) =>
     };
 
     return (
-        <S.Root>
+        <S.Root {...props}>
             {categories.map((category) => {
                 const isSelected = category === selectedCategory;
 
