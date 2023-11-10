@@ -37,6 +37,10 @@ export const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
   }
 
+  .info {
+    background: linear-gradient(180deg, #0A1D35 0%, #0A1326 50%, #0A1D35 100%);
+  }
+
   img {
     max-width: 100%;
     object-fit: contain;

@@ -1,3 +1,4 @@
+import { PageLayout } from '@/layouts';
 import { GlobalStyle, StyledComponentsRegistry, ThemeProvider } from '@/shared/styles';
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
@@ -6,7 +7,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             <StyledComponentsRegistry>
                 <ThemeProvider>
                     <GlobalStyle />
-                    <body>{children}</body>
+                    <body>
+                        <PageLayout>{children}</PageLayout>
+                    </body>
                 </ThemeProvider>
             </StyledComponentsRegistry>
         </html>

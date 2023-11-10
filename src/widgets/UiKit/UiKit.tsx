@@ -1,49 +1,47 @@
 'use client';
 
-import { useState } from 'react';
+// import { useState } from 'react';
 
 import {
-    BinIcon,
-    BoxIcon,
-    Button,
-    CardPaymentIcon,
-    CartIcon,
-    CategorySelect,
-    ChatIcon,
-    Checkbox,
+    // BinIcon,
+    // BoxIcon,
+    // Button,
+    // CardPaymentIcon,
+    // CartIcon,
+    // ChatIcon,
+    // Checkbox,
     Container,
-    CookieBanner,
-    CopyIcon,
-    Dropdown,
-    Input,
-    InstagramColoredIcon,
-    LabelledCheckbox,
-    LabelledInput,
-    LogoutIcon,
-    MenuIcon,
-    Modal,
-    PhoneIcon,
-    ProfileIcon,
-    QuestionIcon,
-    SbpIcon,
-    SizeSelect,
-    Socials,
-    SocialsBanner,
-    TelegramColoredIcon,
-    TelegramIcon,
-    TiktokColoredIcon,
-    UpiterLargeLogo,
-    UpiterSmallLogo,
-    WhatsAppIcon,
-    YoutubeColoredIcon,
+    // CookieBanner,
+    // CopyIcon,
+    // Dropdown,
+    // Input,
+    // InstagramColoredIcon,
+    // LabelledCheckbox,
+    // LabelledInput,
+    // LogoutIcon,
+    // MenuIcon,
+    // Modal,
+    // PhoneIcon,
+    // ProfileIcon,
+    // QuestionIcon,
+    // SbpIcon,
+    // Socials,
+    // SocialsBanner,
+    // TelegramColoredIcon,
+    // TelegramIcon,
+    // TiktokColoredIcon,
+    // UpiterLargeLogo,
+    // UpiterSmallLogo,
+    // WhatsAppIcon,
+    // YoutubeColoredIcon,
 } from '@/shared/ui';
 
 export const UiKit: React.FC = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    // const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
         <Container>
-            <Button onClick={() => setIsModalOpen(true)}>Click me</Button>
+            {/* <Button onClick={() => setIsModalOpen(true)}>Click me</Button>
             <Input />
             <Checkbox />
             <LabelledInput label="label" />
@@ -64,7 +62,7 @@ export const UiKit: React.FC = () => {
                     },
                 ]}
                 trigger={<span>trigger</span>}
-                onChange={(option) => console.log(option)}
+                // onChange={(option) => console.log(option)}
             />
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Title">
                 fdsf dsaf dsf sda fdsf sdaf saf sadf dsaf sadf dsaf saf ads fsf sdaf dsaf
@@ -96,33 +94,10 @@ export const UiKit: React.FC = () => {
                 <UpiterSmallLogo />
                 <UpiterLargeLogo />
                 <SbpIcon />
-                <CategorySelect
-                    categories={[
-                        {
-                            value: 'Хвосты',
-                        },
-                        {
-                            value: 'Купальники',
-                        },
-                    ]}
-                />
-                <SizeSelect
-                    sizes={[
-                        {
-                            value: 'S',
-                        },
-                        {
-                            value: 'M',
-                        },
-                        {
-                            value: 'L',
-                        },
-                    ]}
-                />
                 <Socials />
                 <CookieBanner />
                 <SocialsBanner />
-            </div>
+            </div> */}
         </Container>
     );
 };

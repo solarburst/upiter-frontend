@@ -2,10 +2,15 @@
 
 import styled from 'styled-components';
 
-import { Button, CategorySelect, Paragraph } from '@/shared/ui';
+import { CategorySelect } from '@/features';
+import { Button, Paragraph } from '@/shared/ui';
 
 export const Root = styled.section`
     margin: 80px 0;
+
+    @media screen and (max-width: 768px) {
+        margin: 32px 0 48px;
+    }
 `;
 
 export const Top = styled.div`
@@ -21,6 +26,11 @@ export const Title = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    @media screen and (max-width: 768px) {
+        align-items: center;
+        margin-bottom: 28px;
+    }
 `;
 
 export const Categories = styled(CategorySelect)`

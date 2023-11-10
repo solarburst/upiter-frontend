@@ -10,6 +10,7 @@ export const UnderlinedTitle = styled.h2`
     color: ${({ theme }) => theme.color.text1};
     position: relative;
     z-index: 2;
+    width: fit-content;
 
     &::after {
         content: '';
@@ -20,5 +21,15 @@ export const UnderlinedTitle = styled.h2`
         position: absolute;
         bottom: 9px;
         z-index: -1;
+    }
+
+    @media screen and (max-width: 768px) {
+        font-size: 24px;
+        line-height: normal;
+
+        &::after {
+            height: 4px;
+            bottom: 6px;
+        }
     }
 `;

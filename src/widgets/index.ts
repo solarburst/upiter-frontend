@@ -1,6 +1,11 @@
 export { Catalog } from './Catalog';
+export { CategoryCatalog } from './CategoryCatalog';
+export { Contacts } from './Contacts';
+export { DetailsInformation } from './DetailsInformation';
+export { Feedback } from './Feedback';
 export { Footer } from './Footer';
 export { Gallery } from './Gallery';
 export { Header } from './Header';
+export { SimilarProducts } from './SimilarProducts';
 export { Title } from './Title';
 export { UiKit } from './UiKit';

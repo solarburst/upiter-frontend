@@ -10,9 +10,10 @@ import * as S from './Swiper.style';
 
 interface SwiperProps {
     children: React.ReactElement[];
+    slidesPerView?: number;
 }
 
-export const Swiper: React.FC<SwiperProps> = ({ children }) => {
+export const Swiper: React.FC<SwiperProps> = ({ children, slidesPerView, ...props }) => {
     const prevButtonId = useUuid();
     const nextButtonId = useUuid();
     const paginationId = useUuid();
@@ -21,16 +22,17 @@ export const Swiper: React.FC<SwiperProps> = ({ children }) => {
         <S.Root>
             <ReactSwiper
                 spaceBetween={8}
-                slidesPerGroup={1.2}
+                slidesPerView={'auto'}
                 modules={[Navigation, Pagination]}
                 breakpoints={{
-                    768: {
-                        spaceBetween: 8,
-                        slidesPerView: 3,
+                    1200: {
+                        spaceBetween: 24,
+                        slidesPerView: slidesPerView ?? 3,
                     },
                 }}
                 pagination={{ clickable: true, el: `#${paginationId}` }}
                 navigation={{ prevEl: `#${prevButtonId}`, nextEl: `#${nextButtonId}` }}
+                {...props}
             >
                 {children?.map((item) => <SwiperSlide key={`slider-slide-${item.key}`}>{item}</SwiperSlide>)}
             </ReactSwiper>

@@ -24,7 +24,7 @@ export const Root = styled.div`
 export const SwiperButton = styled.button<{ position: 'left' | 'right' }>`
     display: none;
 
-    @media screen and (${({ theme }) => theme.media.fromTablet}) {
+    @media screen and (min-width: calc(1200px + 32px + 80px)) {
         display: flex;
     }
 

@@ -1,0 +1,1 @@
+export { DetailsSwiper } from './DetailsSwiper';

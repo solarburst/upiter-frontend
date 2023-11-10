@@ -11,7 +11,7 @@ export const Root = styled.header<{ isMobile: boolean; isModalOpen: boolean }>`
     position: absolute;
     top: 0;
     width: 100%;
-    z-index: ${(props) => (props.isMobile && props.isModalOpen ? '1' : '')};
+    z-index: ${(props) => (props.isMobile && props.isModalOpen ? '1000' : '')};
 `;
 
 export const Wrapper = styled.div`

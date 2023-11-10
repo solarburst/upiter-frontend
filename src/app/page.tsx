@@ -1,16 +1,9 @@
-import React from 'react';
+import { MainPage } from '@/views';
 
-import { Catalog, Footer, Gallery, Header, Title, UiKit } from '@/widgets';
-
-const Main = () => {
+const Main = async () => {
     return (
         <>
-            <Header />
-            <Title />
-            {/* <UiKit /> */}
-            <Catalog />
-            <Gallery />
-            <Footer />
+            <MainPage />
         </>
     );
 };

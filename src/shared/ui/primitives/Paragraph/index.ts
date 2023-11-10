@@ -1,1 +1,1 @@
-export { Paragraph } from './Paragraph.style';
+export { Paragraph } from './Paragraph';

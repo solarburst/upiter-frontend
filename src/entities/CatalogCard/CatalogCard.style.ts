@@ -18,7 +18,6 @@ export const Slider = styled.div`
 export const CatalogImage = styled(Image)`
     border-radius: 4px;
     object-fit: cover;
-    // margin-bottom: 8px;
 `;
 
 export const Name = styled.p`
@@ -26,6 +25,7 @@ export const Name = styled.p`
     line-height: 24px;
     color: ${({ theme }) => theme.color.text1};
     width: fit-content;
+    margin-top: 8px;
 `;
 
 export const Price = styled.p`

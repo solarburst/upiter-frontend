@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Paragraph = styled.p`
+export const Root = styled.p`
     font-family: ${({ theme }) => theme.fontFamily.montserrat};
     font-size: 16px;
     font-weight: 400;

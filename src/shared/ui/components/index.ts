@@ -1,7 +1,8 @@
-export type { Category, CategorySelectProps } from './CategorySelect';
-export { CategorySelect } from './CategorySelect';
 export { Container } from './Container';
 export { CookieBanner } from './CookieBanner';
+export { DefaultTitle } from './DefaultTitle';
+export { DetailsInfo } from './DetailsInfo';
+export { DetailsSwiper } from './DetailsSwiper';
 export type { DropdownOption, DropdownProps } from './Dropdown';
 export { Dropdown } from './Dropdown';
 export type { HeaderActionsProps } from './HeaderActions';
@@ -15,6 +16,7 @@ export { LabelledInput } from './LabelledInput';
 export { Modal } from './Modal';
 export type { NavProps } from './Nav';
 export { Nav } from './Nav';
+export { SimilarProductCard } from './SimilarProductCard';
 export type { SizeSelectProps } from './SizeSelect';
 export { SizeSelect } from './SizeSelect';
 export { Socials } from './Socials';

@@ -8,13 +8,13 @@ export const Root = styled.article`
     overflow: hidden;
     position: relative;
     height: 384px;
-    max-width: 384px;
+    width: 384px;
     cursor: pointer;
     display: flex;
 
     @media screen and (max-width: 768px) {
         height: 280px;
-        max-width: 280px;
+        width: 280px;
     }
 `;
 

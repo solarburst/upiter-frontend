@@ -6,7 +6,8 @@ import { Button } from '@/shared/ui/primitives';
 
 export const Root = styled.div`
     display: flex;
-    gap: 24px;
+    gap: 8px;
+    flex-wrap: wrap;
 `;
 
 export const SizeButton = styled(Button)<{ selected: boolean }>`

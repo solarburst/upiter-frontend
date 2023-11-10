@@ -2,10 +2,11 @@ export interface Category {
     href?: string;
     children?: React.ReactNode;
     selected?: boolean;
-    value: string;
+    id: number;
+    name: string;
 }
 
 export interface CategorySelectProps {
     categories: Category[];
-    value?: string;
+    onSelectCategory: (value: number) => void;
 }
