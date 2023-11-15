@@ -1,56 +1,69 @@
 'use client';
 
+import { useState } from 'react';
+
 import { GalleryCard } from '@/entities';
-import { Container, UnderlinedTitle } from '@/shared/ui';
+import { FullscreenGallery } from '@/features/FullscreenGallery/FullscreenGallery';
 
 import * as S from './Gallery.style';
-// import { GalleryOption, GalleryProps } from './Gallery.types';
 
 export const Gallery: React.FC = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [activeIndex, setActiveIndex] = useState(2);
+
     const gallery = [
         {
             id: 1,
-            image: 'https://s3-alpha-sig.figma.com/img/2c51/282b/f0a747b6fb03548fc2698e621db8af34?Expires=1699833600&Signature=Vq86xLt5RKKTERRmt2uUj~~bLArC1VaKLx1pzpSTZTRQH1afRT-seZCqMrn03UGabXUvY5EGWDUDdnYj3tFAWTAJfVZWs3fCJywA4~yry~PxIWsj1C2ZIRZYdJSeRXXYYBTxr2~6FOihGgBK4V0st7fhrkh99GzG9zQrg5-Sgj~Ie6fV~skx5ty06JuFQNUlvPsysjW1k3FYz42NLZc8p~euC61H4fjicEMj88pnLlwuLAV9VNWdyY-GRHU4oadjJ1zHHDErOy5EgLWYjdlev8tfyrdrz7SJ5ATCr9nK4GKmfHtXz1-gtqcJHZ8nlZUj~K2M-VaAsnMAarW2ZM2pfg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+            image: 'https://s3-alpha-sig.figma.com/img/2c51/282b/f0a747b6fb03548fc2698e621db8af34?Expires=1701043200&Signature=UNAWMKXKEEqDnsEJ0k0U97EoKcirMwdQ9xtekmExICQa-K28g2ZLosM9wsQDxqZkoELveDibDruRDz4zv6x5bQ8koIqsz0coS2a2rT13r3B6x6oTS9YuciyhZpwsuZpO9GELlW0cHvisWN7vBa967nHJP~rA99dVNcEvMDLW0ZFaWiJjNcrO5vxlZEi8ggifVT5TghM2EgruH5O41Fi5JFLzhGi0vshJsQEE8N1iDz74VEhpP76z0IGRuMAjNILRG7CeghpwF5SesVegNOEJ2MBfr9f2WX1VJF0puX1y41gHlOhZ7fzevNxJjjl28I7kylyKH2MyJ70L3CvWk4MCSw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
             author_image:
-                'https://s3-alpha-sig.figma.com/img/0577/f0e9/b7fca2f32639871454da0de95f951709?Expires=1699833600&Signature=hMAO0MPQGcMqjPmdlAsEoVGEuJbSXhqKXxFMPdZ1zFPZBwkTCWDOP~nSoa38Swi5kf4z3FPmKlznkMYQ2pB9a3lM62bDSh0ThUsP285wQtFLVe84v5ETQVRgedIZ7MG7FQNholzsKEEFNLi0ogQzhlRGCND5n9N1J7GpPHFZzZUryDFw6EM6jVzpKfSaYXqRZZ1p2-EU7iAO1uVcDbB77tB5cilBdc39r3GACzES1w3c~e8~TgDyJaFcVfeJuRmYC~v3djKQrsLyZGuN2KfKacmvwGn28xyRxKn6pRhjz1g-oh9cD~Jlk7rOpzbxJ9AmL-vsBbh0wKCEpgYuTgsXAQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+                'https://s3-alpha-sig.figma.com/img/0577/f0e9/b7fca2f32639871454da0de95f951709?Expires=1701043200&Signature=h7w54NiEMn2kRIAOUlQ02dLS9xmHRJKhl7LqCvyce5t7vn2D9d-Yl1uaytARAKrlW8PcJXcVHh5KjwK-LoSK~RbyixQVuQDhwaBgnHs7pmHd-NO8fIR2vpAgatsXVk7PzlwksSKd2p~~V9fA31u1IhloYl5aiw3ij-m1BuH9Gc0XfcfQaChkOcLWkNutuM4pwmwsB5bOFKdYCt1ur~XzIFxxJF6GKG3e90B~aInsAdibY~omUu8K3xHODfLy6RcFTWTioIm3Aa2RywqA4qVUJxCG0Junll0YIciHu2vEZn3cwO6mue0cGlL87XNmijbQmm-RmpWMhvlBXY5M1Wzyvg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
             author_name: 'loremipsum',
         },
         {
             id: 2,
-            image: 'https://s3-alpha-sig.figma.com/img/de7d/6d0e/fb5610e796986766f2c2a1d514f1b88d?Expires=1699833600&Signature=ewlLA4zrvi2zQvOm68xhUbeT~kfC0yY4k4YZKVNONG6fb73rKE80ZoEEZFxEhmTKVHsesDnPi3WrPVwUtrL71GN676LT-KQLuotiLE3~sl3eH2p0zUz8ZCPxLuD8UCcHALrmIgYN7~bgTVZ-S0aOPAUV5jAHQsOa1guOreIis2~bCIzDnh25pAzQ-NLnAHC9sjB3az3-OWyMEs2qj7A2-2Pir4XgKEWa7ci4fZ9~i5yNsWXscM1TB3lWVnS7rV08j2~7CVHpJqIb9DC~a01ZW1kN3vwOSwpaaLsqSQV5Z~BsqvSdTxarYA3aqvIkDh52sCOUe138cfyu7yn7kG91YA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+            image: 'https://s3-alpha-sig.figma.com/img/de7d/6d0e/fb5610e796986766f2c2a1d514f1b88d?Expires=1701043200&Signature=Mr~vmPEOtkZnBylcJSnCdB9L0aNJtfRO1VjnsagNzsDWv7qyTBEg4rx3zAB1ugiHFB8Hf9gwGoo~8wDN4P8KrnxLb1VttBCzK00Ra0eQIZ-SDxewy7F5WShPhs4sGgCAMP~tlYSyM4ZDEtr0zY5CgZOSas8t2UwUgCCevgia6l6XV6vmg8bjt6RCOKPeYtkjRTY0aLX8X4x772~KFikVpWEO3TSdQpJtdLfYqOmv3Q-hBFsJO8yRiPpxF-uyxp2Igw7SdMLnYJAAumTIKm5EBRNYZME0No0LUHcOcIVTeKEdrvbn0a8jskKbpPF5eUdaODd71dt~ihafH30CTfT0XQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
             author_image:
-                'https://s3-alpha-sig.figma.com/img/51b4/1f20/db95c385c8df9dbc1cafee5ea93687e3?Expires=1699833600&Signature=eDjjWSZSETUOPDhrBFdQjM6~-g39nsNGF3Jkfw0Xukj2rVlCXjwE9qaGXBh6s1bcJe8ViwMBCq-3cqjwSbkY2jQe-OH7m8DdQKDNfr~ooYUOrjx~D4MrrPwe7HXzU5aALY6MzAZxQEkpmRHYmpokd6pt8wdcOLYtIkqKusRupNGhBo~Jd~Tpmu60IcN~aKilioaeCJobBJqNtV1lkcNfw9TxL7FoJI~M4EOpcy8xOF8x2dIaPMlHCFBJGYBxzebx~Xm9mQS82OeRiej6fDg6kjpi2VY8YRZA1g3wMBLaRTXMctwlqxIg2DT0Ta1LhLueAfXgVJx7~PQImnwXH7C2lw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+                'https://s3-alpha-sig.figma.com/img/0577/f0e9/b7fca2f32639871454da0de95f951709?Expires=1701043200&Signature=h7w54NiEMn2kRIAOUlQ02dLS9xmHRJKhl7LqCvyce5t7vn2D9d-Yl1uaytARAKrlW8PcJXcVHh5KjwK-LoSK~RbyixQVuQDhwaBgnHs7pmHd-NO8fIR2vpAgatsXVk7PzlwksSKd2p~~V9fA31u1IhloYl5aiw3ij-m1BuH9Gc0XfcfQaChkOcLWkNutuM4pwmwsB5bOFKdYCt1ur~XzIFxxJF6GKG3e90B~aInsAdibY~omUu8K3xHODfLy6RcFTWTioIm3Aa2RywqA4qVUJxCG0Junll0YIciHu2vEZn3cwO6mue0cGlL87XNmijbQmm-RmpWMhvlBXY5M1Wzyvg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
             author_name: 'loremipsum',
         },
         {
             id: 3,
-            image: 'https://s3-alpha-sig.figma.com/img/0a82/9d7b/cd964dde30228c65c35adcf0cd62d381?Expires=1699833600&Signature=Nwz~El9pZB~wQKqXtmLod-ofb4ipqc4gt1s~oRJDLaaHY7R4lFqLX1-yumnmZbniDebOh3WVBxEB7prDdE4ttDYhfE34LusqiKQl5UeB5ka5JaSY6lAcKgGaSClCcgDVQa1VS6GS0Mvqcm-BnEaD1j6uLPsfdZc9rYpgM75XmPJ-0cN-cgFLex7ht2~eg~zOzWrcp85At~Nyk-qmNRRV6ngLyHqx1mquhoyTQRrmYTeBD2NMTpW1FsRhuJHVuLAeSEJ5bf5~LqdWKX5R0ZnbQRkP3RGX-cvH35e2NbnnIMSLbL5JaHRqWGRtIxDjCuFahJZNlEz7ZXpNHItgt6FtaQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+            image: 'https://s3-alpha-sig.figma.com/img/0a82/9d7b/cd964dde30228c65c35adcf0cd62d381?Expires=1701043200&Signature=BXnzMECH-3N64uaVjn3tBKVC73~xhjEc15OP9nToHy~2IzTHiuCXUTFfATdtbOH8Q64rixFTZdaV62PLaTS~glgjT7Nhj9aLTlx4lR5L~uOT8HtPVoah00vFad0eVFDb29SQqKZ80L3HWSGzUO3FsynWXvEpBYJ9wDuQ4v03Uk9faAbB4ur-HfSEBWBq9nFsTSQV-4fMaYYSXnut-Sl~PP~9RV4DmMi3zjyQmj~wIYPGTZ5~LuJMTKbRPqUR5ZRuYL4fO9feRVoet94Uo5~r6hW6NCTrHODLMrh-zLijDKi2E1zkkMbERIYWAeMsQOysRzCyAu8udXqjsN50YrPG9A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
             author_image:
-                'https://s3-alpha-sig.figma.com/img/b263/ae2a/fb120378836111a07a5300c568dee5c5?Expires=1699833600&Signature=cZY7ZjXNf7XNEIHZx6U7l~hnJkB2iRUCYZKT-jT5dtDIH6sifUeCPWipbxU6GhEWa7-UTrlbPWb8GWPn-QDnyWOGEiN8mGE4Knia2LEoIbrkHV-BHXVojY1g~8aI1dU~wV8WKJGB26aGmm53zsUgyP8SptHS3T~eJb3rLS3drqIoMaXA7GHcYZ-RUXXnxIszp66Yz2cVWFhYV5YaQ5HzGpecfVgVFkHkxS~R8JqMikpynXegHm98FK4DfyGKYLHL86y84fSUbTr3lWAqQtJndwMR8uHriyg9KS1k9qlKIWLk4CYWPfe~Gu8FaEUFF9SzXHdyqQUkNnKb0k7Bb2yJ7A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+                'https://s3-alpha-sig.figma.com/img/0577/f0e9/b7fca2f32639871454da0de95f951709?Expires=1701043200&Signature=h7w54NiEMn2kRIAOUlQ02dLS9xmHRJKhl7LqCvyce5t7vn2D9d-Yl1uaytARAKrlW8PcJXcVHh5KjwK-LoSK~RbyixQVuQDhwaBgnHs7pmHd-NO8fIR2vpAgatsXVk7PzlwksSKd2p~~V9fA31u1IhloYl5aiw3ij-m1BuH9Gc0XfcfQaChkOcLWkNutuM4pwmwsB5bOFKdYCt1ur~XzIFxxJF6GKG3e90B~aInsAdibY~omUu8K3xHODfLy6RcFTWTioIm3Aa2RywqA4qVUJxCG0Junll0YIciHu2vEZn3cwO6mue0cGlL87XNmijbQmm-RmpWMhvlBXY5M1Wzyvg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
             author_name: 'loremipsum',
         },
         {
             id: 4,
-            image: 'https://s3-alpha-sig.figma.com/img/de7d/6d0e/fb5610e796986766f2c2a1d514f1b88d?Expires=1699833600&Signature=ewlLA4zrvi2zQvOm68xhUbeT~kfC0yY4k4YZKVNONG6fb73rKE80ZoEEZFxEhmTKVHsesDnPi3WrPVwUtrL71GN676LT-KQLuotiLE3~sl3eH2p0zUz8ZCPxLuD8UCcHALrmIgYN7~bgTVZ-S0aOPAUV5jAHQsOa1guOreIis2~bCIzDnh25pAzQ-NLnAHC9sjB3az3-OWyMEs2qj7A2-2Pir4XgKEWa7ci4fZ9~i5yNsWXscM1TB3lWVnS7rV08j2~7CVHpJqIb9DC~a01ZW1kN3vwOSwpaaLsqSQV5Z~BsqvSdTxarYA3aqvIkDh52sCOUe138cfyu7yn7kG91YA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+            image: 'https://s3-alpha-sig.figma.com/img/0a82/9d7b/cd964dde30228c65c35adcf0cd62d381?Expires=1701043200&Signature=BXnzMECH-3N64uaVjn3tBKVC73~xhjEc15OP9nToHy~2IzTHiuCXUTFfATdtbOH8Q64rixFTZdaV62PLaTS~glgjT7Nhj9aLTlx4lR5L~uOT8HtPVoah00vFad0eVFDb29SQqKZ80L3HWSGzUO3FsynWXvEpBYJ9wDuQ4v03Uk9faAbB4ur-HfSEBWBq9nFsTSQV-4fMaYYSXnut-Sl~PP~9RV4DmMi3zjyQmj~wIYPGTZ5~LuJMTKbRPqUR5ZRuYL4fO9feRVoet94Uo5~r6hW6NCTrHODLMrh-zLijDKi2E1zkkMbERIYWAeMsQOysRzCyAu8udXqjsN50YrPG9A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
             author_image:
-                'https://s3-alpha-sig.figma.com/img/51b4/1f20/db95c385c8df9dbc1cafee5ea93687e3?Expires=1699833600&Signature=eDjjWSZSETUOPDhrBFdQjM6~-g39nsNGF3Jkfw0Xukj2rVlCXjwE9qaGXBh6s1bcJe8ViwMBCq-3cqjwSbkY2jQe-OH7m8DdQKDNfr~ooYUOrjx~D4MrrPwe7HXzU5aALY6MzAZxQEkpmRHYmpokd6pt8wdcOLYtIkqKusRupNGhBo~Jd~Tpmu60IcN~aKilioaeCJobBJqNtV1lkcNfw9TxL7FoJI~M4EOpcy8xOF8x2dIaPMlHCFBJGYBxzebx~Xm9mQS82OeRiej6fDg6kjpi2VY8YRZA1g3wMBLaRTXMctwlqxIg2DT0Ta1LhLueAfXgVJx7~PQImnwXH7C2lw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+                'https://s3-alpha-sig.figma.com/img/0577/f0e9/b7fca2f32639871454da0de95f951709?Expires=1701043200&Signature=h7w54NiEMn2kRIAOUlQ02dLS9xmHRJKhl7LqCvyce5t7vn2D9d-Yl1uaytARAKrlW8PcJXcVHh5KjwK-LoSK~RbyixQVuQDhwaBgnHs7pmHd-NO8fIR2vpAgatsXVk7PzlwksSKd2p~~V9fA31u1IhloYl5aiw3ij-m1BuH9Gc0XfcfQaChkOcLWkNutuM4pwmwsB5bOFKdYCt1ur~XzIFxxJF6GKG3e90B~aInsAdibY~omUu8K3xHODfLy6RcFTWTioIm3Aa2RywqA4qVUJxCG0Junll0YIciHu2vEZn3cwO6mue0cGlL87XNmijbQmm-RmpWMhvlBXY5M1Wzyvg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
             author_name: 'loremipsum',
         },
     ];
 
     return (
-        <S.Root>
-            <Container>
-                <S.Title>
-                    <UnderlinedTitle>Галерея</UnderlinedTitle>
-                    <S.TitleDescription>фотографии наших покупателей</S.TitleDescription>
-                </S.Title>
-                <S.Gallery>
-                    {gallery.map((item) => (
-                        <GalleryCard src={item.image} author_image={item.author_image} author_name={item.author_name} key={item.id} />
-                    ))}
-                </S.Gallery>
-            </Container>
-        </S.Root>
+        <S.StyledPageSection titleType="underlined" title="Галерея" subtitle="фотографии наших покупателей">
+            <S.Gallery>
+                {gallery.map((item, index) => (
+                    <GalleryCard
+                        src={item.image}
+                        author_image={item.author_image}
+                        author_name={item.author_name}
+                        key={item.id}
+                        handleOnClick={() => {
+                            setIsOpen(true);
+                            setActiveIndex(index);
+                        }}
+                    />
+                ))}
+            </S.Gallery>
+            <FullscreenGallery
+                images={gallery.map((item) => item.image)}
+                open={isOpen}
+                onClose={() => setIsOpen(false)}
+                activeIndex={activeIndex}
+            />
+        </S.StyledPageSection>
     );
 };

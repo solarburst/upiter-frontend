@@ -1,12 +1,11 @@
 'use client';
 
 import { FeedbackCard } from '@/entities';
-import { Container, UnderlinedTitle } from '@/shared/ui';
 
 import * as S from './Feedback.style';
-// import { FeedbackOption, FeedbackProps } from './Feedback.types';
+import { FeedbackProps } from './Feedback.types';
 
-export const Feedback: React.FC = () => {
+export const Feedback: React.FC<FeedbackProps> = ({ title }) => {
     const feedback = [
         {
             id: 1,
@@ -43,17 +42,12 @@ export const Feedback: React.FC = () => {
     ];
 
     return (
-        <S.Root>
-            <Container>
-                <S.Title>
-                    <UnderlinedTitle>Отзывы</UnderlinedTitle>
-                </S.Title>
-                <S.Reviews slidesPerView={4}>
-                    {feedback.map((item) => (
-                        <FeedbackCard src={item.image} key={item.id} />
-                    ))}
-                </S.Reviews>
-            </Container>
-        </S.Root>
+        <S.StyledPageSection titleType={title} title="Отзывы">
+            <S.Reviews slidesPerView={4}>
+                {feedback.map((item) => (
+                    <FeedbackCard src={item.image} key={item.id} />
+                ))}
+            </S.Reviews>
+        </S.StyledPageSection>
     );
 };

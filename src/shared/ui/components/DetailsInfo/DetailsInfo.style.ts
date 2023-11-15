@@ -2,14 +2,13 @@
 
 import styled from 'styled-components';
 
-import { Button, Paragraph } from '@/shared/ui/primitives';
+import { Button } from '@/shared/ui/primitives';
+import { Paragraph } from '@/shared/ui/primitives/Paragraph';
 
 export const Root = styled.div`
     display: flex;
     flex-direction: column;
 `;
-
-export const DetailsParagraph = styled(Paragraph)``;
 
 export const Title = styled.div`
     display: flex;
@@ -57,6 +56,10 @@ export const BuyButton = styled(Button)`
     margin: 48px 0;
     padding: 10px 60px;
     width: fit-content;
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
 `;
 
 export const Info = styled.div`

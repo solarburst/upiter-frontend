@@ -19,7 +19,7 @@ export const Swiper: React.FC<SwiperProps> = ({ children, slidesPerView, ...prop
     const paginationId = useUuid();
 
     return (
-        <S.Root>
+        <S.Root {...props}>
             <ReactSwiper
                 spaceBetween={8}
                 slidesPerView={'auto'}
@@ -32,7 +32,6 @@ export const Swiper: React.FC<SwiperProps> = ({ children, slidesPerView, ...prop
                 }}
                 pagination={{ clickable: true, el: `#${paginationId}` }}
                 navigation={{ prevEl: `#${prevButtonId}`, nextEl: `#${nextButtonId}` }}
-                {...props}
             >
                 {children?.map((item) => <SwiperSlide key={`slider-slide-${item.key}`}>{item}</SwiperSlide>)}
             </ReactSwiper>

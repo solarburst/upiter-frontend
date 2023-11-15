@@ -11,7 +11,6 @@ export const Root = styled.section`
 `;
 
 export const Information = styled.div`
-    paddingtop: 200px;
     display: flex;
     justify-content: space-between;
     gap: 64px;
@@ -19,5 +18,9 @@ export const Information = styled.div`
     @media screen and (max-width: 1200px) {
         flex-direction: column;
         align-items: center;
+    }
+
+    @media screen and (max-width: 768px) {
+        gap: 20px;
     }
 `;

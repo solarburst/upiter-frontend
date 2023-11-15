@@ -6,7 +6,7 @@ import { Container } from '@/shared/ui';
 import * as S from './CategoryCatalog.style';
 import { CategoryCatalogProps } from './CategoryCatalog.types';
 
-export const CategoryCatalog: React.FC<CategoryCatalogProps> = async ({ category, products }) => {
+export const CategoryCatalog: React.FC<CategoryCatalogProps> = ({ category, products }) => {
     return (
         <S.Root>
             <Container>

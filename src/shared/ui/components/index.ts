@@ -16,6 +16,7 @@ export { LabelledInput } from './LabelledInput';
 export { Modal } from './Modal';
 export type { NavProps } from './Nav';
 export { Nav } from './Nav';
+export { PageSection } from './PageSection';
 export { SimilarProductCard } from './SimilarProductCard';
 export type { SizeSelectProps } from './SizeSelect';
 export { SizeSelect } from './SizeSelect';

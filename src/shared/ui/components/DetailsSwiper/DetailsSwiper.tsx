@@ -36,6 +36,7 @@ export const DetailsSwiper: React.FC<DetailsSwiperProps> = ({ images, ...props }
                     <ReactSwiper
                         slidesPerView={1}
                         modules={[Pagination]}
+                        centeredSlides={true}
                         pagination={{ clickable: true, el: `#${paginationId}` }}
                         {...props}
                     >
@@ -51,7 +52,7 @@ export const DetailsSwiper: React.FC<DetailsSwiperProps> = ({ images, ...props }
             {!isMobile && (
                 <>
                     <ReactSwiper
-                        slidesPerView={1}
+                        slidesPerView={'auto'}
                         modules={[Navigation, Thumbs]}
                         navigation={{ prevEl: `#${prevButtonId}`, nextEl: `#${nextButtonId}` }}
                         thumbs={thumbsSwiper ? { swiper: thumbsSwiper } : undefined}

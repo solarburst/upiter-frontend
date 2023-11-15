@@ -69,7 +69,7 @@ export const GlobalStyle = createGlobalStyle`
 
   .ReactModal__Content {
     transition: ${({ theme }) => theme.transition.slow};
-    position: absolute !important;
+    position: fixed !important;
     background-color: ${({ theme }) => theme.color.bg3} !important;
     top: 0 !important;
     bottom: 0 !important;

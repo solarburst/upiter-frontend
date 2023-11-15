@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Button, Socials } from '@/shared/ui';
 
 export const Root = styled.div`
-    margin-bottom: 80px;
+    margin-bottom: 32px;
 
     @media screen and (max-width: 768px) {
         margin-bottom: 40px;

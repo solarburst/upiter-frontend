@@ -14,15 +14,10 @@ export const SimilarProductImage = styled.div`
     border-radius: 4px;
     overflow: hidden;
     position: relative;
-    height: 500px;
+    height: 440px;
     width: 282px;
     cursor: pointer;
     display: flex;
-
-    @media screen and (max-width: 768px) {
-        height: 496px;
-        width: 280px;
-    }
 `;
 
 export const Background = styled(Image)`

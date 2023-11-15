@@ -3,34 +3,10 @@
 import styled from 'styled-components';
 
 import { CategorySelect } from '@/features';
-import { Button, Paragraph } from '@/shared/ui';
+import { Button, PageSection } from '@/shared/ui';
 
-export const Root = styled.section`
-    margin: 80px 0;
-
-    @media screen and (max-width: 768px) {
-        margin: 32px 0 48px;
-    }
-`;
-
-export const Top = styled.div`
-    display: flex;
-    justify-content: space-between;
-
-    @media screen and (max-width: 768px) {
-        flex-direction: column;
-    }
-`;
-
-export const Title = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    @media screen and (max-width: 768px) {
-        align-items: center;
-        margin-bottom: 28px;
-    }
+export const StyledPageSection = styled(PageSection)`
+    margin-top: 80px;
 `;
 
 export const Categories = styled(CategorySelect)`
@@ -53,8 +29,6 @@ export const Categories = styled(CategorySelect)`
     }
 `;
 
-export const TitleDescription = styled(Paragraph)``;
-
 export const Content = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fill, 282px);
@@ -63,7 +37,7 @@ export const Content = styled.div`
     justify-content: center;
 
     @media screen and (max-width: 768px) {
-        grid-template-columns: repeat(auto-fill, 160px);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 24px 8px;
     }
 `;

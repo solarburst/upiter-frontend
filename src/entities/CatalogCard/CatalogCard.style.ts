@@ -7,17 +7,25 @@ export const Root = styled.article`
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    width: fit-content;
 `;
 
 export const Slider = styled.div`
     position: relative;
-    width: fit-content;
+    width: 100%;
+    max-width: 282px;
+
+    .swiper-slide {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 `;
 
 export const CatalogImage = styled(Image)`
     border-radius: 4px;
     object-fit: cover;
+    width: 100%;
+    height: auto;
 `;
 
 export const Name = styled.p`
@@ -43,7 +51,7 @@ export const SwiperPagination = styled.div`
     z-index: 5;
     gap: 2px;
     padding: 2px;
-    bottom: 6px !important;
+    bottom: 0 !important;
 
     .swiper-pagination-bullet {
         position: relative;

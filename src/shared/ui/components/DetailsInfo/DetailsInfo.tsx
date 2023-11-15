@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { Modal, SizeSelect } from '@/shared/ui';
+import { Paragraph } from '@/shared/ui/primitives/Paragraph';
 
 import * as S from './DetailsInfo.style';
 
@@ -11,11 +12,11 @@ export const DetailsInfo: React.FC = () => {
         <S.Root>
             <S.Title>
                 <S.TitleName>Небольшое название</S.TitleName>
-                <S.DetailsParagraph>хвост</S.DetailsParagraph>
+                <Paragraph>хвост</Paragraph>
                 <S.TitlePrice>25 000 ₽</S.TitlePrice>
             </S.Title>
             <S.SizeInfo>
-                <S.DetailsParagraph>Размер</S.DetailsParagraph>
+                <Paragraph>Размер</Paragraph>
                 <SizeSelect
                     sizes={[
                         {

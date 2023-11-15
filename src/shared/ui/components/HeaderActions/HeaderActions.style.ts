@@ -15,19 +15,22 @@ export const Root = styled.div`
 `;
 
 export const ActionButton = styled(Button)`
-    border-radius: unset;
-    background-color: transparent;
-    gap: 8px;
-    padding: 0;
-
-    &:hover {
-        color: ${({ theme }) => theme.color.text1};
+    && {
+        border-radius: unset;
         background-color: transparent;
+        gap: 8px;
+        padding: 0;
+
+        &:hover {
+            color: ${({ theme }) => theme.color.text1};
+            background-color: transparent;
+        }
     }
 `;
 
 export const LanguageSelect = styled(Dropdown)`
     font-size: 16px;
+    min-width: 90px;
 `;
 
 export const ActionsSeparator = styled.div`

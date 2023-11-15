@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Nav, Paragraph, Socials } from '@/shared/ui';
 
-export const Root = styled.div`
+export const Root = styled.footer`
     // position: absolute;
     // bottom: 0;
     width: 100%;
@@ -15,6 +15,7 @@ export const Text = styled(Paragraph)`
     font-size: 14px;
     line-height: 24px;
     margin-bottom: 48px;
+    padding-top: 48px;
 `;
 
 export const Wrapper = styled.div<{ isTablet: boolean }>`

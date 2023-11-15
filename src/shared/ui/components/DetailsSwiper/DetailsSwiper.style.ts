@@ -9,18 +9,26 @@ export const Root = styled.div`
     gap: 24px;
     flex-direction: column;
 
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+
     .swiper {
         max-width: 100%;
     }
 
     .swiper-slide {
-        max-width: 100%;
+        width: fit-content;
         overflow: hidden;
         cursor: pointer;
 
         img {
             max-width: 100%;
             object-fit: cover;
+
+            @media screen and (max-width: 768px) {
+                height: auto;
+            }
         }
     }
 

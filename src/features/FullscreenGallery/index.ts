@@ -1,0 +1,1 @@
+export { FullscreenGallery } from './FullscreenGallery';
