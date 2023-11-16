@@ -55,7 +55,7 @@ export const DetailsSwiper: React.FC<DetailsSwiperProps> = ({ images, ...props }
                         slidesPerView={'auto'}
                         modules={[Navigation, Thumbs]}
                         navigation={{ prevEl: `#${prevButtonId}`, nextEl: `#${nextButtonId}` }}
-                        thumbs={thumbsSwiper ? { swiper: thumbsSwiper } : undefined}
+                        thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
                         {...props}
                     >
                         {images?.map((item) => (
