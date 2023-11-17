@@ -11,11 +11,11 @@ export const Root = styled.div<{ open?: boolean }>`
     transition: ${({ theme }) => theme.transition.default};
     left: 0;
     right: 0;
-    z-index: 10;
+    z-index: 10000;
     overflow: hidden;
 
     display: grid;
-    grid-template-columns: 90px minmax(0, 1184px);
+    grid-template-columns: 90px minmax(0, 1fr);
     gap: 24px;
     padding: 32px;
 
@@ -76,6 +76,7 @@ export const SwiperThumbs = styled.div`
     display: grid;
     overflow: hidden;
     position: relative;
+    z-index: 3;
 
     .swiper {
         width: 100%;

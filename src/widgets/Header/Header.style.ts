@@ -7,11 +7,12 @@ import { HeaderModal } from '@/shared/ui/components/HeaderModal';
 import { Nav } from '@/shared/ui/components/Nav';
 import { Button } from '@/shared/ui/primitives/';
 
-export const Root = styled.header<{ isMobile: boolean; isModalOpen: boolean }>`
-    position: absolute;
+export const Root = styled.header<{ isMobile: boolean; isModalOpen: boolean; sticky: boolean }>`
+    position: ${(props) => (props.sticky ? 'fixed' : 'absolute')};
+    background-color: ${({ theme, sticky }) => (sticky ? theme.color.bg1 : 'transparent')};
     top: 0;
     width: 100%;
-    z-index: ${(props) => (props.isMobile && props.isModalOpen ? '1000' : '')};
+    z-index: ${(props) => (props.isMobile && props.isModalOpen ? '1000' : '100')};
 `;
 
 export const Wrapper = styled.div`

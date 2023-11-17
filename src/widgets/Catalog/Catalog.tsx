@@ -19,9 +19,15 @@ export const Catalog: React.FC<CatalogProps> = ({ categories, products }) => {
         >
             <S.Content>
                 {products
-                    .filter((item) => item.categories.some((categoryItem) => categoryItem === selectedCategory))
+                    .filter((item) => item.categoryId === selectedCategory)
                     .map((item) => (
-                        <CatalogCard images={item.images} name={item.name} price={item.price} key={item.id} />
+                        <CatalogCard
+                            id={item.id}
+                            images={item.images}
+                            name={item.name}
+                            price={item.prices[item.id + 1].amount}
+                            key={item.id}
+                        />
                     ))}
             </S.Content>
             <S.ShowAll>Показать всё +</S.ShowAll>

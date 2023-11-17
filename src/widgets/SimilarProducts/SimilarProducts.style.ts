@@ -29,9 +29,14 @@ export const Products = styled(Swiper)`
 
     @media screen and (max-width: 768px) {
         padding-bottom: 32px;
+        gap: 16px;
     }
 
-    @media screen and (max-width: 768px) {
-        gap: 16px;
+    button {
+        top: calc(50% - 104px);
+
+        @media screen and (max-width: 768px) {
+            top: calc(50% - 72px);
+        }
     }
 `;

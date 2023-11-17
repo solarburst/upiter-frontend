@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 export const Root = styled.article`
@@ -29,12 +30,15 @@ export const Background = styled(Image)`
     border-radius: 4px;
 `;
 
+export const InstagramLink = styled(Link)`
+    align-self: flex-end;
+`;
+
 export const Content = styled.div`
     padding: 12px 8px;
     display: flex;
     gap: 8px;
     align-items: center;
-    align-self: flex-end;
 `;
 
 export const AuthorImage = styled(Image)`

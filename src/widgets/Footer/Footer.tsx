@@ -1,20 +1,22 @@
 'use client';
 
-import { useIsTablet } from '@/shared/hooks';
+import { useIsTablet, usePaths } from '@/shared/hooks';
 import { ChildrenProps } from '@/shared/types';
 import { Container, UpiterLargeLogo, UpiterSmallLogo } from '@/shared/ui';
 
 import * as S from './Footer.style';
 
 export const Footer: React.FC<ChildrenProps> = ({ children }) => {
+    const paths = usePaths();
+
     const navItems = [
         {
             value: 'Главная',
-            href: '/',
+            href: `${paths.main}`,
         },
         {
-            value: 'Qwe',
-            href: 'qwe',
+            value: 'Каталог',
+            href: `${paths.catalog}`,
         },
     ];
 

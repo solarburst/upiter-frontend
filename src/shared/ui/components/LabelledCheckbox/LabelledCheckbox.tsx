@@ -1,4 +1,4 @@
-import { Checkbox } from '@/shared/ui';
+import { Checkbox } from '@/shared/ui/primitives';
 
 import * as S from './LabelledCheckbox.style';
 import { LabelledCheckboxProps } from './LabelledCheckbox.types';

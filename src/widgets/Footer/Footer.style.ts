@@ -5,8 +5,6 @@ import styled from 'styled-components';
 import { Nav, Paragraph, Socials } from '@/shared/ui';
 
 export const Root = styled.footer`
-    // position: absolute;
-    // bottom: 0;
     width: 100%;
     background: linear-gradient(180deg, #0a1d35 0%, #0a1326 50%, #0a1d35 100%);
 `;

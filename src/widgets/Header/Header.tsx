@@ -2,14 +2,15 @@
 
 import { useState } from 'react';
 
-import { useIsMobile, useIsTablet } from '@/shared/hooks';
+import { useIsMobile, useIsTablet, usePaths, useScroll } from '@/shared/hooks';
 import { CloseIcon, Container, MenuIcon, UpiterLargeLogo, UpiterSmallLogo } from '@/shared/ui';
 
 import * as S from './Header.style';
-// import { HeaderOption, HeaderProps } from './Header.types';
 
 export const Header: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const paths = usePaths();
 
     const languages = [
         {
@@ -25,19 +26,21 @@ export const Header: React.FC = () => {
     const navItems = [
         {
             value: 'Главная',
-            href: '/',
+            href: `${paths.main}`,
         },
         {
-            value: 'Qwe',
-            href: 'qwe',
+            value: 'Каталог',
+            href: `${paths.catalog}`,
         },
     ];
 
     const isTablet = useIsTablet();
     const isMobile = useIsMobile();
 
+    const scrollY = useScroll();
+
     return (
-        <S.Root isMobile={isMobile} isModalOpen={isModalOpen}>
+        <S.Root isMobile={isMobile} isModalOpen={isModalOpen} sticky={scrollY > 64}>
             <Container>
                 <S.Wrapper>
                     <S.Icons>
@@ -56,7 +59,15 @@ export const Header: React.FC = () => {
                                 <CloseIcon />
                             </S.Menu>
                         )}
-                        {isTablet ? <UpiterSmallLogo /> : <UpiterLargeLogo />}
+                        {isTablet ? (
+                            <S.Menu href={paths.main}>
+                                <UpiterSmallLogo />
+                            </S.Menu>
+                        ) : (
+                            <S.Menu href={paths.main}>
+                                <UpiterLargeLogo />
+                            </S.Menu>
+                        )}
                     </S.Icons>
                     {!isTablet && <S.Navigation items={navItems} />}
                     <S.Actions isTablet={isTablet} languages={languages} />

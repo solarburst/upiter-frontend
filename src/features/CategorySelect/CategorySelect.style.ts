@@ -7,6 +7,10 @@ import { Button } from '@/shared/ui/primitives';
 export const Root = styled.div`
     display: flex;
     gap: 24px;
+
+    .swiper-slide {
+        width: fit-content;
+    }
 `;
 
 export const CategoryButton = styled(Button)<{ selected: boolean }>`

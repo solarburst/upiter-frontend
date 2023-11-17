@@ -1,24 +1,35 @@
 'use client';
 
+import Image from 'next/image';
 import styled from 'styled-components';
 
 import { Button } from '@/shared/ui';
 
 export const Root = styled.section`
-    background-image: url('/images/main.png');
-    background-repeat: no-repeat;
-    background-position-x: 65%;
-    background-position-y: 90%;
-    background-size: cover;
+    position: relative;
+`;
 
-    @media screen and (max-width: 768px) {
-        background:
-            linear-gradient(0deg, rgba(10, 19, 38, 0.4) 0%, rgba(10, 19, 38, 0.4) 100%),
-            url('/images/main.png'),
-            lightgray -579.244px -177.64px / 341.172% 139.911% no-repeat;
-        background-position-x: 65%;
-        background-position-y: 90%;
-        background-size: cover;
+export const BackgroundImage = styled(Image)`
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+`;
+
+export const ContentWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 720px;
+
+    @media screen and (${({ theme }) => theme.media.fromLaptop}) {
+        min-height: 650px;
+        align-items: flex-start;
     }
 `;
 
@@ -26,8 +37,8 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 255px 0;
-    width: 582px;
+    text-align: start;
+    max-width: 600px;
 
     @media screen and (max-width: 768px) {
         align-items: center;

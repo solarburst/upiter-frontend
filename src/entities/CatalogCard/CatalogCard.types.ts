@@ -1,9 +1,6 @@
-export interface CatalogCardImage {
-    src: string;
-}
-
 export interface CatalogCardProps {
-    images: CatalogCardImage[];
+    id: number;
+    images: string[];
     name: string;
     price: string;
 }
