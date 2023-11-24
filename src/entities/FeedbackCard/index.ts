@@ -1,1 +1,2 @@
-export { FeedbackCard } from './Feedback';
+export { FeedbackCard } from './FeedbackCard';
+export { feedbackSlice, fetchFeedback } from './model';

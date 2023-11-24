@@ -10,4 +10,8 @@ export const StyledPageSection = styled(PageSection)`
 
 export const Reviews = styled(Swiper)`
     margin-top: 32px;
+
+    .swiper {
+        width: 100%;
+    }
 `;

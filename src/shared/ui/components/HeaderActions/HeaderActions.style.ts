@@ -33,6 +33,10 @@ export const LanguageSelect = styled(Dropdown)`
     min-width: 90px;
 `;
 
+export const CurrencySelect = styled(Dropdown)`
+    font-size: 16px;
+`;
+
 export const ActionsSeparator = styled.div`
     width: 1px;
     background-color: ${({ theme }) => theme.color.text1};

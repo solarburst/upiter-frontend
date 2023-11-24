@@ -1,25 +1,31 @@
 'use client';
 
+import { BannerType } from '@/shared/api/types';
+import { useAppSelector } from '@/shared/hooks';
+import { getImageUrl } from '@/shared/lib';
 import { Container } from '@/shared/ui';
 
 import * as S from './Banner.style';
-// import { BannerProps } from './Banner.types';
 
 export const Banner: React.FC = () => {
+    const banner = useAppSelector<BannerType | null>((state) => state.banner.banner);
+
     return (
         <S.Root>
-            <S.BackgroundImage src={'/images/main.png'} width={4096} height={2430} alt="" />
-            <Container>
-                <S.ContentWrapper>
-                    <S.Content>
-                        <S.Heading>Хвосты русалки</S.Heading>
-                        <S.Paragraph>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doese eius tempor incididunt ut labore et dolore
-                        </S.Paragraph>
-                        <S.OrderButton>Заказать</S.OrderButton>
-                    </S.Content>
-                </S.ContentWrapper>
-            </Container>
+            {banner && (
+                <>
+                    <S.BackgroundImage src={getImageUrl(banner.image)} width={4096} height={2430} alt="" priority />
+                    <Container>
+                        <S.ContentWrapper>
+                            <S.Content>
+                                <S.Heading>{banner.title}</S.Heading>
+                                <S.Paragraph>{banner.description}</S.Paragraph>
+                                <S.OrderButton href={banner.link.url}>{banner.link.label}</S.OrderButton>
+                            </S.Content>
+                        </S.ContentWrapper>
+                    </Container>
+                </>
+            )}
         </S.Root>
     );
 };

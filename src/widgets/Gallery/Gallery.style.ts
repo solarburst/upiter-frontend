@@ -8,4 +8,8 @@ export const StyledPageSection = styled(PageSection)`
     margin: 48px 0 80px;
 `;
 
-export const Gallery = styled(Swiper)``;
+export const Gallery = styled(Swiper)`
+    .swiper {
+        width: 100%;
+    }
+`;

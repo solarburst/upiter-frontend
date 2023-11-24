@@ -8,6 +8,7 @@ import { Paragraph } from '@/shared/ui/primitives/Paragraph';
 export const Root = styled.div`
     display: flex;
     flex-direction: column;
+    max-width: 520px;
 `;
 
 export const Title = styled.div`
@@ -96,5 +97,16 @@ export const InfoListItem = styled.li`
         content: '•';
         position: absolute;
         left: 8px;
+    }
+`;
+
+export const Sizes = styled.div`
+    table {
+        width: 100%;
+
+        th {
+            font-size: 12px;
+            text-align: justify;
+        }
     }
 `;

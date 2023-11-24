@@ -1,6 +1,8 @@
 export interface DropdownOption {
     value: string;
     label: React.ReactNode;
+    id: number;
+    locale?: string;
     href?: string;
 }
 

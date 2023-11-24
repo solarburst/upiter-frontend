@@ -16,7 +16,9 @@ interface ModalProps {
 
 export const Modal: React.FC<ModalProps> = ({ children, title, isOpen, onClose }) => {
     useEffect(() => {
-        document.body.style.overflowY = isOpen ? 'hidden' : 'auto';
+        if (typeof document !== undefined) {
+            document.body.style.overflowY = isOpen ? 'hidden' : 'auto';
+        }
     }, [isOpen]);
 
     const handleClose = () => {

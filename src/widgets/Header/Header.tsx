@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
 import { useIsMobile, useIsTablet, usePaths, useScroll } from '@/shared/hooks';
@@ -8,6 +9,7 @@ import { CloseIcon, Container, MenuIcon, UpiterLargeLogo, UpiterSmallLogo } from
 import * as S from './Header.style';
 
 export const Header: React.FC = () => {
+    const t = useTranslations('Common');
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const paths = usePaths();
@@ -16,20 +18,24 @@ export const Header: React.FC = () => {
         {
             label: <span>Русский</span>,
             value: 'Русский',
+            id: 1,
+            locale: 'ru',
         },
         {
             label: <span>English</span>,
             value: 'English',
+            id: 2,
+            locale: 'en',
         },
     ];
 
     const navItems = [
         {
-            value: 'Главная',
+            value: t('paths.main'),
             href: `${paths.main}`,
         },
         {
-            value: 'Каталог',
+            value: t('paths.catalog'),
             href: `${paths.catalog}`,
         },
     ];

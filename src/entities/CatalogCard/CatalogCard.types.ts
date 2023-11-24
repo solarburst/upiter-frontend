@@ -1,6 +1,9 @@
 export interface CatalogCardProps {
-    id: number;
+    slug: string;
     images: string[];
     name: string;
-    price: string;
+    prices: {
+        amount: number;
+        currency: number;
+    }[];
 }

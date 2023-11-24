@@ -1,33 +1,29 @@
 'use client';
 
-import { Container, SimilarProductCard } from '@/shared/ui';
+import { useTranslations } from 'next-intl';
+
+import { CatalogCard } from '@/entities';
+import { Product } from '@/shared/api/types';
+import { useAppSelector } from '@/shared/hooks';
+import { Container } from '@/shared/ui';
 
 import * as S from './SimilarProducts.style';
 
 export const SimilarProducts: React.FC = () => {
-    const products = [
-        {
-            name: 'Небольшое название',
-            price: '25 000 Р',
-            images: [
-                {
-                    src: '/storage//products-images/01HFDR4NJJ59E03RAA92MNVGM9.png',
-                },
-            ],
-            categories: [1, 3],
-            id: 1,
-        },
-    ];
+    const t = useTranslations('Product');
+    const currentProduct = useAppSelector<Product | null>((state) => state.product.product);
+    const products = useAppSelector<Product[]>((state) => state.products.products);
+    const similar = products.filter((item) => item.category_id === currentProduct?.category_id && item.id !== currentProduct?.id);
 
     return (
         <S.Root>
             <Container>
                 <S.Title>
-                    <S.Heading>Похожие товары</S.Heading>
+                    <S.Heading>{t('similarProducts')}</S.Heading>
                 </S.Title>
                 <S.Products slidesPerView={4}>
-                    {products.map((item) => (
-                        <SimilarProductCard src={item.images[0].src} name={item.name} price={item.price} key={item.id} />
+                    {similar.map((item) => (
+                        <CatalogCard slug={item.slug} images={item.images} name={item.name} prices={item.prices} key={item.id} />
                     ))}
                 </S.Products>
             </Container>

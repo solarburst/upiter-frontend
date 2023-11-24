@@ -9,15 +9,13 @@ import { Swiper as ReactSwiper, SwiperSlide } from 'swiper/react';
 import { Swiper } from 'swiper/types';
 
 import { useIsMobile, useUuid } from '@/shared/hooks';
+import { getImageUrl } from '@/shared/lib';
 import { ArrowDownLineIcon } from '@/shared/ui';
 
 import * as S from './DetailsSwiper.style';
 
 interface DetailsSwiperProps {
-    images: {
-        id: number;
-        src: string;
-    }[];
+    images: string[];
 }
 
 export const DetailsSwiper: React.FC<DetailsSwiperProps> = ({ images, ...props }) => {
@@ -41,8 +39,8 @@ export const DetailsSwiper: React.FC<DetailsSwiperProps> = ({ images, ...props }
                         {...props}
                     >
                         {images?.map((item) => (
-                            <SwiperSlide key={`slider-slide-${item.id}`}>
-                                <Image src={item.src} key={item.id} width={620} height={820} alt={''} />
+                            <SwiperSlide key={`slider-slide-${item}`}>
+                                <Image src={getImageUrl(item)} key={item} width={620} height={820} alt={''} />
                             </SwiperSlide>
                         ))}
                     </ReactSwiper>
@@ -59,8 +57,8 @@ export const DetailsSwiper: React.FC<DetailsSwiperProps> = ({ images, ...props }
                         {...props}
                     >
                         {images?.map((item) => (
-                            <SwiperSlide key={`slider-slide-${item.id}`}>
-                                <Image src={item.src} key={item.id} width={620} height={820} alt={''} />
+                            <SwiperSlide key={`slider-slide-${item}`}>
+                                <Image src={getImageUrl(item)} key={item} width={620} height={820} alt={''} />
                             </SwiperSlide>
                         ))}
                         <S.SwiperButton id={prevButtonId} position="left">
@@ -79,8 +77,8 @@ export const DetailsSwiper: React.FC<DetailsSwiperProps> = ({ images, ...props }
                         className="thumbs-swiper"
                     >
                         {images?.map((item) => (
-                            <SwiperSlide key={`slider-thumb-${item.id}`}>
-                                <Image src={item.src} key={item.id} width={70} height={90} alt={''} />
+                            <SwiperSlide key={`slider-thumb-${item}`}>
+                                <Image src={getImageUrl(item)} key={item} width={70} height={90} alt={''} />
                             </SwiperSlide>
                         ))}
                     </ReactSwiper>

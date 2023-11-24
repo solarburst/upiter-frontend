@@ -1,19 +1,59 @@
 'use client';
 
-import { useEffect } from 'react';
+import Cookies from 'js-cookie';
+import { useTranslations } from 'next-intl';
+import { useEffect, useTransition } from 'react';
 import ReactModal from 'react-modal';
+import { useDispatch } from 'react-redux';
 
-import { useIsMobile } from '@/shared/hooks';
-import { CloseIcon } from '@/shared/ui';
+import { settingsSlice } from '@/entities';
+import { usePathname, useRouter } from '@/navigation';
+import { Currency } from '@/shared/api/types';
+import { useAppSelector, useIsMobile } from '@/shared/hooks';
+import { CloseIcon, DropdownOption } from '@/shared/ui';
 
 import * as S from './HeaderModal.style';
 import { HeaderModalProps } from './HeaderModal.types';
 
 export const HeaderModal: React.FC<HeaderModalProps> = ({ isOpen, onClose, navItems, languages }) => {
+    const router = useRouter();
+    const pathname = usePathname();
+    const [isPending, startTransition] = useTransition();
+    const t = useTranslations('Common');
+
     const isMobile = useIsMobile();
+    const dispatch = useDispatch();
+    const currencies = useAppSelector<Currency[]>((state) => state.settings.currencies);
+    const selectedCurrency = useAppSelector<number>((state) => state.settings.selectedCurrency);
+
+    const currenciesOptions = currencies.map((currency) => ({
+        value: currency.name,
+        label: <span>{currency.name}</span>,
+        id: currency.id,
+    }));
+
+    const selectedCurrencyValue = currenciesOptions.find((item) => item.id === selectedCurrency);
+
+    const selectedLanguage = languages.find((language) => language.locale === Cookies.get('NEXT_LOCALE'));
+
+    const handleCurrencyChange = (option: DropdownOption) => {
+        dispatch(settingsSlice.actions.setSelectedCurrency(option.id));
+        Cookies.set('SELECTED_CURRENCY', option.id.toString());
+    };
+
+    const handleLanguageChange = (option: DropdownOption) => {
+        if (!isPending) {
+            const nextLocale = option.locale;
+            startTransition(() => {
+                router.replace(pathname, { locale: nextLocale });
+            });
+        }
+    };
 
     useEffect(() => {
-        document.body.style.overflowY = isOpen ? 'hidden' : 'auto';
+        if (typeof document !== undefined) {
+            document.body.style.overflowY = isOpen ? 'hidden' : 'auto';
+        }
     }, [isOpen]);
 
     const handleClose = () => {
@@ -33,10 +73,11 @@ export const HeaderModal: React.FC<HeaderModalProps> = ({ isOpen, onClose, navIt
             )}
             <S.ModalContent isMobile={isMobile}>
                 <S.ModalNavigation items={navItems} vertical={true} />
-                <S.ModalDropdown options={languages} value={languages[0].value} />
+                <S.ModalDropdown options={languages} value={selectedLanguage?.value} onChange={handleLanguageChange} />
+                <S.CurrencyDropdown options={currenciesOptions} value={selectedCurrencyValue?.value} onChange={handleCurrencyChange} />
                 <S.Line />
                 <S.ModalSocials />
-                <S.ModalButton>Написать в WhatsApp</S.ModalButton>
+                <S.ModalButton>{t('contacts.writeTo', { method: 'WhatsApp' })}</S.ModalButton>
             </S.ModalContent>
         </ReactModal>
     );

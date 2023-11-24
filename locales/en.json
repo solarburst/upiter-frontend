@@ -1,0 +1,72 @@
+{
+    "Main": {
+        "catalog": {
+            "title": "Catalog",
+            "subtitle": "goods in stock",
+            "showAll": "Show all   +"
+        },
+        "gallery": {
+            "title": "Gallery",
+            "subtitle": "photos of our customers",
+            "orderOfTotal": "{order} of {total}"
+        }
+    },
+
+    "Product": {
+        "similarProducts": "Similar Products",
+        "size": "Size",
+        "sizesTable": "Sizes table",
+        "buy": "Buy",
+        "ordering": "Ordering"
+    },
+
+    "Common": {
+        "cart": {
+            "cart": "Cart"
+        },
+        "aria": {
+            "close": "Close"
+        },
+        "contacts": {
+            "title": "Contacts",
+            "subtitle": "Subscribe to us on social networks, write questions and reviews",
+            "contactUs": "Contact us",
+            "contactUsVia": "Contact us via {method}",
+            "writeTo": "Write to {method}"
+        },
+
+        "reviews": {
+            "title": "Reviews"
+        },
+
+        "paths": {
+            "main": "Main",
+            "catalog": "Catalog"
+        }
+    },
+    "NotFound": {
+        "title": "404: Not found",
+        "subtitle": "Could not find requested resource",
+        "back": "Return Home"
+    },
+    "Order": {
+        "cart": "Cart",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "patronymic": "Patronymic",
+        "size": "Size",
+        "state": "State",
+        "region": "Region",
+        "city": "City",
+        "postIndex": "Postcode",
+        "street": "Street",
+        "house": "House",
+        "apartment": "Apartment",
+        "entrance": "Entrance",
+        "floor": "Floor",
+        "phone": "Phone",
+        "email": "E-mail",
+        "comment": "Commentary",
+        "order": "Checkout"
+    }
+}

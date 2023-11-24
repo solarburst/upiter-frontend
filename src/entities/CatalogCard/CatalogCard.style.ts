@@ -3,10 +3,11 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 
-export const Root = styled.article`
+export const Root = styled.article<{ empty: boolean }>`
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    height: ${(props) => (props.empty ? '100%' : '')};
 `;
 
 export const Slider = styled.div`
@@ -21,11 +22,19 @@ export const Slider = styled.div`
     }
 `;
 
-export const CatalogImage = styled(Image)`
-    border-radius: 4px;
-    object-fit: cover;
+export const NoImg = styled.div`
+    position: relative;
     width: 100%;
-    height: auto;
+    height: 100%;
+    max-width: 282px;
+`;
+
+export const CatalogImage = styled(Image)<{ empty: boolean }>`
+    border-radius: 4px;
+    object-fit: ${(props) => (props.empty ? 'contain' : 'cover')};
+    width: 100%;
+    height: ${(props) => (props.empty ? '100%' : 'auto')};
+    background-color: ${(props) => (props.empty ? '#6B7F99' : 'none')};
 `;
 
 export const Name = styled.p`

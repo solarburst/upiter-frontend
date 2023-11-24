@@ -1,9 +1,10 @@
 export interface BannerProps {
-    image: string;
+    id: number;
     title: string;
-    subtitle: string;
+    description: string;
+    image: string;
     link: {
-        text: string;
-        href: string;
+        label: string;
+        url: string;
     };
 }

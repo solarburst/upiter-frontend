@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as ISwiper } from 'swiper/types';
 
 import { useUuid } from '@/shared/hooks';
+import { getImageUrl } from '@/shared/lib';
 import { CloseIcon } from '@/shared/ui';
 
 import * as S from './FullscreenGallery.style';
@@ -21,7 +22,6 @@ interface ProductImagesProps {
 }
 
 export const FullscreenGallery: React.FC<ProductImagesProps> = ({ images, activeIndex, open, onClose }) => {
-    const [mounted, setMounted] = useState(false);
     const swiperRef = useRef<{ swiper: ISwiper } | null>(null);
     const thumbsRef = useRef<{ swiper: ISwiper } | null>(null);
     const keyPrefix = useUuid('key');
@@ -30,7 +30,6 @@ export const FullscreenGallery: React.FC<ProductImagesProps> = ({ images, active
     const [thumbsSwiper, setThumbsSwiper] = useState<ISwiper | null>(null);
     const [index, setIndex] = useState(0);
 
-    useEffect(() => setMounted(true), []);
     useEffect(() => {
         if (swiperRef.current && thumbsRef.current && open) {
             swiperRef.current.swiper.activeIndex = activeIndex;
@@ -38,7 +37,17 @@ export const FullscreenGallery: React.FC<ProductImagesProps> = ({ images, active
         setIndex(activeIndex);
     }, [activeIndex, open]);
 
-    document.body.style.overflowY = mounted && open ? 'hidden' : 'scroll';
+    useEffect(() => {
+        if (typeof window !== undefined) {
+            const originalOverflowY = document.body.style.overflowY;
+
+            document.body.style.overflowY = open ? 'hidden' : 'scroll';
+
+            return () => {
+                document.body.style.overflowY = originalOverflowY;
+            };
+        }
+    }, [open]);
 
     return (
         <S.Root open={open}>
@@ -65,7 +74,7 @@ export const FullscreenGallery: React.FC<ProductImagesProps> = ({ images, active
                 >
                     {images.map((image) => (
                         <SwiperSlide key={`${keyPrefix}-${image}`}>
-                            <S.SwiperThumb src={image} alt="" width={70} height={90} />
+                            <S.SwiperThumb src={getImageUrl(image)} alt="" width={70} height={90} />
                         </SwiperSlide>
                     ))}
                 </Swiper>
@@ -89,7 +98,7 @@ export const FullscreenGallery: React.FC<ProductImagesProps> = ({ images, active
                 >
                     {images.map((image) => (
                         <SwiperSlide key={`${keyPrefix}-${image}`}>
-                            <S.SwiperImage src={image} alt="" width={720} height={900} />
+                            <S.SwiperImage src={getImageUrl(image)} alt="" width={720} height={900} />
                         </SwiperSlide>
                     ))}
                 </Swiper>

@@ -1,0 +1,72 @@
+{
+    "Main": {
+        "catalog": {
+            "title": "Каталог",
+            "subtitle": "готовые решения в наличии",
+            "showAll": "Показать всё   +"
+        },
+        "gallery": {
+            "title": "Галерея",
+            "subtitle": "фотографии наших покупателей",
+            "orderOfTotal": "{order} из {total}"
+        }
+    },
+
+    "Product": {
+        "similarProducts": "Похожие товары",
+        "size": "Размер",
+        "sizesTable": "Таблица размеров",
+        "buy": "Купить",
+        "ordering": "Оформление заказа"
+    },
+
+    "Common": {
+        "cart": {
+            "cart": "Корзина"
+        },
+        "aria": {
+            "close": "Закрыть"
+        },
+        "contacts": {
+            "title": "Контакты",
+            "subtitle": "Подписывайтесь на нас в соцсетях, оставляйте вопросы и отзывы",
+            "contactUs": "Связаться с нами",
+            "contactUsVia": "Связаться с нами через {method}",
+            "writeTo": "Написать в {method}"
+        },
+
+        "reviews": {
+            "title": "Отзывы"
+        },
+
+        "paths": {
+            "main": "Главная",
+            "catalog": "Каталог"
+        }
+    },
+    "NotFound": {
+        "title": "404: страница не найдена",
+        "subtitle": "Не удалось найти запрашиваемую страницу",
+        "back": "На главную"
+    },
+    "Order": {
+        "cart": "Корзина",
+        "firstName": "Имя",
+        "lastName": "Фамилия",
+        "patronymic": "Отчество",
+        "size": "Размер",
+        "state": "Страна",
+        "region": "Регион",
+        "city": "Город",
+        "postIndex": "Индекс",
+        "street": "Улица",
+        "house": "Дом",
+        "apartment": "Квартира",
+        "entrance": "Подъезд",
+        "floor": "Этаж",
+        "phone": "Номер телефона",
+        "email": "Электронная почта",
+        "comment": "Комментарий",
+        "order": "Оформить заказ"
+    }
+}

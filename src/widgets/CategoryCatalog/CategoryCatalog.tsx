@@ -13,9 +13,9 @@ export const CategoryCatalog: React.FC<CategoryCatalogProps> = ({ category, prod
                 <S.Title>{category.name}</S.Title>
                 <S.Content>
                     {products
-                        .filter((item) => item.categories.some((categoryItem) => categoryItem === category.id))
+                        .filter((item) => item.category_id === category.id)
                         .map((item) => (
-                            <CatalogCard images={item.images} name={item.name} price={item.price} key={item.id} />
+                            <CatalogCard slug={item.slug} images={item.images} name={item.name} prices={item.prices} key={item.id} />
                         ))}
                 </S.Content>
             </Container>

@@ -2,7 +2,7 @@
 
 import styled from 'styled-components';
 
-import { CategorySelect } from '@/features';
+import { CategorySelect } from '@/entities';
 import { Button, PageSection } from '@/shared/ui';
 
 export const StyledPageSection = styled(PageSection)`

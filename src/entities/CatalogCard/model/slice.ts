@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import Cookies from 'js-cookie';
 
 import { getProducts } from '@/shared/api';
 
@@ -11,14 +12,22 @@ const initialState = {
 } as ProductsState;
 
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
-    const data = await getProducts();
+    const locale = Cookies.get('NEXT_LOCALE');
+
+    const data = await getProducts(locale || 'ru');
     return data;
 });
 
 export const productsSlice = createSlice({
     name: 'products',
     initialState,
-    reducers: {},
+    reducers: {
+        setProducts: (state, action) => {
+            state.products = action.payload;
+            state.status = 'succeeded';
+            state.error = null;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchProducts.pending, (state) => {

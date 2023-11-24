@@ -3,15 +3,15 @@
 import { usePathname } from 'next/navigation';
 
 import { ChildrenProps } from '@/shared/types';
-import { Contacts, Feedback, Footer, Header } from '@/widgets';
+import { Contacts, CookieBanner, Feedback, Footer, Header, SocialsBanner } from '@/widgets';
 
 import * as S from './PageLayout.style';
 
 export const PageLayout: React.FC<ChildrenProps> = ({ children }) => {
     const pathname = usePathname();
 
-    const hasContacts = pathname === '/';
-    const hasFeedback = pathname === '/';
+    const hasContacts = pathname === '/en' || pathname === '/ru';
+    const hasFeedback = pathname === '/en' || pathname === '/ru';
 
     return (
         <S.Root>
@@ -21,6 +21,10 @@ export const PageLayout: React.FC<ChildrenProps> = ({ children }) => {
                 {hasFeedback && <Feedback title={'underlined'} />}
                 {hasContacts && <Contacts />}
             </Footer>
+            <S.Widgets>
+                <CookieBanner />
+                <SocialsBanner />
+            </S.Widgets>
         </S.Root>
     );
 };

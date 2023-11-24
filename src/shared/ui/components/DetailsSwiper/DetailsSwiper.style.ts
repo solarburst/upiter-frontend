@@ -95,7 +95,7 @@ export const SwiperMobileButton = styled.button<{ position: 'left' | 'right' }>`
     padding: 8px;
     border-radius: 50%;
     ${(props) => `
-    ${props.position}: -56px;
+    ${props.position}: -48px;
     rotate: ${props.position === 'left' ? '90deg' : '-90deg'};
   `}
     cursor: pointer;

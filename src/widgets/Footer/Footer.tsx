@@ -1,5 +1,7 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 import { useIsTablet, usePaths } from '@/shared/hooks';
 import { ChildrenProps } from '@/shared/types';
 import { Container, UpiterLargeLogo, UpiterSmallLogo } from '@/shared/ui';
@@ -7,15 +9,16 @@ import { Container, UpiterLargeLogo, UpiterSmallLogo } from '@/shared/ui';
 import * as S from './Footer.style';
 
 export const Footer: React.FC<ChildrenProps> = ({ children }) => {
+    const t = useTranslations('Common');
     const paths = usePaths();
 
     const navItems = [
         {
-            value: 'Главная',
+            value: t('paths.main'),
             href: `${paths.main}`,
         },
         {
-            value: 'Каталог',
+            value: t('paths.catalog'),
             href: `${paths.catalog}`,
         },
     ];

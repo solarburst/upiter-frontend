@@ -39,4 +39,8 @@ export const Products = styled(Swiper)`
             top: calc(50% - 72px);
         }
     }
+
+    .swiper-slide img {
+        height: 440px;
+    }
 `;

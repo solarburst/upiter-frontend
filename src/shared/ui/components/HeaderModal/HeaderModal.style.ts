@@ -55,6 +55,12 @@ export const ModalNavigation = styled(Nav)``;
 export const ModalDropdown = styled(Dropdown)`
     margin-top: 24px;
     font-size: 16px;
+    z-index: 110;
+`;
+
+export const CurrencyDropdown = styled(Dropdown)`
+    margin-top: 24px;
+    font-size: 16px;
     z-index: 100;
 `;
 

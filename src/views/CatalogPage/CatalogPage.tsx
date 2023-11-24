@@ -1,13 +1,28 @@
-import React from 'react';
+'use client';
 
-import { getCategories, getProducts } from '@/shared/api';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { categoriesSlice, productsSlice, settingsSlice } from '@/entities';
+import { Category, Currency, Product } from '@/shared/api/types';
 import { CategoryCatalog } from '@/widgets';
 
 import * as S from './CatalogPage.style';
 
-export const CatalogPage = async () => {
-    const categories = await getCategories();
-    const products = await getProducts();
+interface CatalogPageProps {
+    categories: Category[];
+    products: Product[];
+    settings: Currency[];
+}
+
+export const CatalogPage: React.FC<CatalogPageProps> = ({ categories, products, settings }) => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(productsSlice.actions.setProducts(products));
+        dispatch(categoriesSlice.actions.setCategories(categories));
+        dispatch(settingsSlice.actions.setSettings(settings));
+    }, [categories, products]);
 
     return (
         <S.Root>

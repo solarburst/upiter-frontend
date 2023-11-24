@@ -1,5 +1,4 @@
 export { Container } from './Container';
-export { CookieBanner } from './CookieBanner';
 export { DefaultTitle } from './DefaultTitle';
 export { DetailsInfo } from './DetailsInfo';
 export { DetailsSwiper } from './DetailsSwiper';
@@ -16,11 +15,11 @@ export { LabelledInput } from './LabelledInput';
 export { Modal } from './Modal';
 export type { NavProps } from './Nav';
 export { Nav } from './Nav';
+export { OrderCard } from './OrderCard';
 export { PageSection } from './PageSection';
 export { SimilarProductCard } from './SimilarProductCard';
 export type { SizeSelectProps } from './SizeSelect';
 export { SizeSelect } from './SizeSelect';
 export { Socials } from './Socials';
-export { SocialsBanner } from './SocialsBanner';
 export { Swiper } from './Swiper';
 export { UnderlinedTitle } from './UnderlinedTitle';
