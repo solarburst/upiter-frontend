@@ -5,12 +5,13 @@ import { useState } from 'react';
 
 import { CatalogCard } from '@/entities';
 import { Category, Product } from '@/shared/api/types';
-import { useAppSelector } from '@/shared/hooks';
+import { useAppSelector, usePaths } from '@/shared/hooks';
 
 import * as S from './Catalog.style';
 
 export const Catalog: React.FC = () => {
     const t = useTranslations('Main');
+    const paths = usePaths();
     const [selectedCategory, setSelectedCateogry] = useState<number>();
 
     const products = useAppSelector<Product[]>((state) => state.products.products);
@@ -31,7 +32,7 @@ export const Catalog: React.FC = () => {
                         <CatalogCard slug={item.slug} images={item.images} name={item.name} prices={item.prices} key={item.id} />
                     ))}
             </S.Content>
-            <S.ShowAll>{t('catalog.showAll')}</S.ShowAll>
+            <S.ShowAll href={paths.catalog}>{t('catalog.showAll')}</S.ShowAll>
         </S.StyledPageSection>
     );
 };

@@ -67,6 +67,13 @@
         "phone": "Phone",
         "email": "E-mail",
         "comment": "Commentary",
-        "order": "Checkout"
+        "order": "Checkout",
+        "errors": {
+            "required": "Required",
+            "email": "Enter a correct email",
+            "maxLength": "Max length is {count} characters",
+            "positive": "Must be a positive number",
+            "integer": "Must be integer"
+        }
     }
 }

@@ -34,5 +34,6 @@ export const Content = styled.div`
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 24px 8px;
         margin: 20px 0;
+        padding: 0;
     }
 `;

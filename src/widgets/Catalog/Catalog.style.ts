@@ -3,29 +3,30 @@
 import styled from 'styled-components';
 
 import { CategorySelect } from '@/entities';
-import { Button, PageSection } from '@/shared/ui';
+import { Button } from '@/shared/ui';
+import { PageSection } from '@/shared/ui';
 
 export const StyledPageSection = styled(PageSection)`
-    margin-top: 80px;
+    && (margin-top: 80px;)
 `;
 
 export const Categories = styled(CategorySelect)`
     align-self: flex-end;
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+        background-color: transparent;
+        width: 4px;
+        height: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        border-radius: 10px;
+    }
 
     @media screen and (max-width: 768px) {
-        overflow-x: scroll;
         align-self: unset;
-
-        &::-webkit-scrollbar {
-            background-color: transparent;
-            width: 4px;
-            height: 4px;
-        }
-
-        &::-webkit-scrollbar-thumb {
-            background-color: transparent;
-            border-radius: 10px;
-        }
     }
 `;
 
@@ -45,6 +46,7 @@ export const Content = styled.div`
 export const ShowAll = styled(Button)`
     margin: 0 auto;
     padding: 10px 60px;
+    width: fit-content;
 
     @media screen and (max-width: 768px) {
         border-radius: unset;

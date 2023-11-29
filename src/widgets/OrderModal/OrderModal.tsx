@@ -2,7 +2,7 @@
 
 import { Formik } from 'formik';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as Yup from 'yup';
 
 import { sendOrder } from '@/shared/api';
@@ -17,7 +17,21 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, setIsOpen }) => 
     const t = useTranslations('Order');
     const product = useAppSelector<Product | null>((state) => state.product.product);
     const size = useAppSelector<string | null>((state) => state.product.size);
-    const [status, setStatus] = useState<string>();
+    const [status, setStatus] = useState<string | null>(null);
+    const successTimeoutRef = useRef<null | NodeJS.Timeout>(null);
+    const errorTimeoutRef = useRef<null | NodeJS.Timeout>(null);
+
+    const clearSuccessTimeout = () => {
+        if (successTimeoutRef.current) {
+            clearTimeout(successTimeoutRef.current);
+        }
+    };
+
+    const clearErrorTimeout = () => {
+        if (errorTimeoutRef.current) {
+            clearTimeout(errorTimeoutRef.current);
+        }
+    };
 
     const initialValues = {
         firstName: '',
@@ -31,29 +45,66 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, setIsOpen }) => 
         house: '',
         apartment: '',
         entrance: '',
-        floor: undefined,
+        floor: '',
         phone: '',
         email: '',
         comment: '',
     };
 
     const validationSchema = Yup.object().shape({
-        firstName: Yup.string().required('Required'),
-        lastName: Yup.string().required('Required'),
-        patronymic: Yup.string(),
-        state: Yup.string().required('Required'),
-        region: Yup.string().required('Required'),
-        city: Yup.string().required('Required'),
-        postIndex: Yup.string().required('Required'),
-        street: Yup.string().required('Required'),
-        house: Yup.string().required('Required'),
-        apartment: Yup.string(),
-        entrance: Yup.string(),
-        floor: Yup.number().integer('Must be an integer').positive('Must be a positive number'),
-        phone: Yup.string().required('Required'),
-        email: Yup.string().email('Invalid email').required('Required'),
-        comment: Yup.string().required('Required'),
+        firstName: Yup.string()
+            .required(t('errors.required'))
+            .max(255, t('errors.maxLength', { count: 255 })),
+        lastName: Yup.string()
+            .required(t('errors.required'))
+            .max(255, t('errors.maxLength', { count: 255 })),
+        patronymic: Yup.string()
+            .required(t('errors.required'))
+            .max(255, t('errors.maxLength', { count: 255 })),
+        state: Yup.string()
+            .required(t('errors.required'))
+            .max(255, t('errors.maxLength', { count: 255 })),
+        region: Yup.string()
+            .required(t('errors.required'))
+            .max(255, t('errors.maxLength', { count: 255 })),
+        city: Yup.string()
+            .required(t('errors.required'))
+            .max(255, t('errors.maxLength', { count: 255 })),
+        postIndex: Yup.string()
+            .required(t('errors.required'))
+            .max(255, t('errors.maxLength', { count: 255 })),
+        street: Yup.string()
+            .required(t('errors.required'))
+            .max(255, t('errors.maxLength', { count: 255 })),
+        house: Yup.string()
+            .required(t('errors.required'))
+            .max(255, t('errors.maxLength', { count: 255 })),
+        apartment: Yup.string()
+            .required(t('errors.required'))
+            .max(255, t('errors.maxLength', { count: 255 })),
+        entrance: Yup.string()
+            .required(t('errors.required'))
+            .max(255, t('errors.maxLength', { count: 255 })),
+        floor: Yup.number().integer(t('errors.integer')).positive(t('errors.positive')),
+        phone: Yup.string()
+            .required(t('errors.required'))
+            .max(255, t('errors.maxLength', { count: 255 })),
+        email: Yup.string()
+            .email(t('errors.email'))
+            .required(t('errors.required'))
+            .max(255, t('errors.maxLength', { count: 255 })),
+        comment: Yup.string()
+            .required(t('errors.required'))
+            .max(255, t('errors.maxLength', { count: 255 })),
     });
+
+    useEffect(() => {
+        // Очистка таймеров при размонтировании компонента
+        return () => {
+            clearSuccessTimeout();
+            clearErrorTimeout();
+        };
+    }, []);
 
     return (
         <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title={t('cart')}>
@@ -61,7 +112,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, setIsOpen }) => 
                 <Formik
                     initialValues={initialValues}
                     validationSchema={validationSchema}
-                    onSubmit={(values, { setSubmitting }) => {
+                    onSubmit={(values, { setSubmitting, resetForm }) => {
                         const data = {
                             user: {
                                 firstName: values.firstName,
@@ -84,7 +135,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, setIsOpen }) => 
                                 house: values.house,
                                 apartment: values.apartment,
                                 entrance: values.entrance,
-                                floor: values.floor,
+                                floor: +values.floor,
                                 phone: values.phone,
                                 email: values.email,
                                 comment: values.comment,
@@ -93,9 +144,21 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, setIsOpen }) => 
                         sendOrder(data)
                             .then(() => {
                                 setStatus('ok');
+                                resetForm();
+
+                                clearSuccessTimeout();
+
+                                successTimeoutRef.current = setTimeout(() => {
+                                    setStatus(null);
+                                }, 5000);
                             })
                             .catch(() => {
                                 setStatus('error');
+                                clearErrorTimeout();
+
+                                errorTimeoutRef.current = setTimeout(() => {
+                                    setStatus(null);
+                                }, 5000);
                             });
                         setSubmitting(false);
                     }}
@@ -110,6 +173,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, setIsOpen }) => 
                                 onBlur={handleBlur}
                                 value={values.firstName}
                                 error={errors.firstName && touched.firstName && errors.firstName}
+                                required
                             />
                             <LabelledInput
                                 name="lastName"
@@ -118,6 +182,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, setIsOpen }) => 
                                 onBlur={handleBlur}
                                 value={values.lastName}
                                 error={errors.lastName && touched.lastName && errors.lastName}
+                                required
                             />
                             <LabelledInput
                                 name="patronymic"
@@ -134,6 +199,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, setIsOpen }) => 
                                 onBlur={handleBlur}
                                 value={values.state}
                                 error={errors.state && touched.state && errors.state}
+                                required
                             />
                             <LabelledInput
                                 name="region"
@@ -142,6 +208,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, setIsOpen }) => 
                                 onBlur={handleBlur}
                                 value={values.region}
                                 error={errors.region && touched.region && errors.region}
+                                required
                             />
                             <LabelledInput
                                 name="city"
@@ -150,6 +217,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, setIsOpen }) => 
                                 onBlur={handleBlur}
                                 value={values.city}
                                 error={errors.city && touched.city && errors.city}
+                                required
                             />
                             <LabelledInput
                                 name="postIndex"
@@ -158,6 +226,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, setIsOpen }) => 
                                 onBlur={handleBlur}
                                 value={values.postIndex}
                                 error={errors.postIndex && touched.postIndex && errors.postIndex}
+                                required
                             />
                             <LabelledInput
                                 name="street"
@@ -166,6 +235,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, setIsOpen }) => 
                                 onBlur={handleBlur}
                                 value={values.street}
                                 error={errors.street && touched.street && errors.street}
+                                required
                             />
                             <LabelledInput
                                 name="house"
@@ -174,6 +244,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, setIsOpen }) => 
                                 onBlur={handleBlur}
                                 value={values.house}
                                 error={errors.house && touched.house && errors.house}
+                                required
                             />
                             <LabelledInput
                                 name="apartment"
@@ -207,6 +278,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, setIsOpen }) => 
                                 onBlur={handleBlur}
                                 value={values.phone}
                                 error={errors.phone && touched.phone && errors.phone}
+                                required
                             />
                             <LabelledInput
                                 name="email"
@@ -216,6 +288,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, setIsOpen }) => 
                                 onBlur={handleBlur}
                                 value={values.email}
                                 error={errors.email && touched.email && errors.email}
+                                required
                             />
                             <LabelledInput
                                 name="comment"
@@ -225,6 +298,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, setIsOpen }) => 
                                 onBlur={handleBlur}
                                 value={values.comment}
                                 error={errors.comment && touched.comment && errors.comment}
+                                required
                             />
                             <OrderCard product={product} />
                             {status && (

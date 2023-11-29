@@ -1,11 +1,10 @@
-// import Cookies from 'js-cookie';
-import { cookies } from 'next/headers';
+import Cookies from 'js-cookie';
 
 import { getBanner, getCategories, getFeedback, getGallery, getProducts, getSettings } from '@/shared/api';
 import { MainPage } from '@/views';
 
 const Main = async ({ params }: { params: { locale: string } }) => {
-    const locale = cookies().get('NEXT_LOCALE')?.value || params.locale;
+    const locale = Cookies.get('NEXT_LOCALE') || params.locale;
 
     const categories = await getCategories(locale);
     const products = await getProducts(locale);

@@ -30,7 +30,6 @@ export const ActionButton = styled(Button)`
 
 export const LanguageSelect = styled(Dropdown)`
     font-size: 16px;
-    min-width: 90px;
 `;
 
 export const CurrencySelect = styled(Dropdown)`

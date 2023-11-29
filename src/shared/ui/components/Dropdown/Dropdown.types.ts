@@ -12,4 +12,5 @@ export interface DropdownProps {
     onChange?: (option: DropdownOption) => void;
     trigger?: React.ReactNode;
     position?: 'left' | 'right';
+    disabled?: boolean;
 }

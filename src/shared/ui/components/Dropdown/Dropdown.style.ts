@@ -1,10 +1,18 @@
 'use client';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Root = styled.div`
+export const Root = styled.div<{ disabled?: boolean }>`
     position: relative;
     max-width: max-content;
+
+    ${(props) =>
+        props.disabled
+            ? css`
+                  opacity: 0.7;
+                  pointer-events: none;
+              `
+            : ''}
 `;
 
 export const Trigger = styled.button<{ open?: boolean }>`

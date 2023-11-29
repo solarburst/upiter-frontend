@@ -13,7 +13,6 @@ export const Root = styled.article<{ empty: boolean }>`
 export const Slider = styled.div`
     position: relative;
     width: 100%;
-    max-width: 282px;
 
     .swiper-slide {
         width: 100%;
@@ -34,7 +33,7 @@ export const CatalogImage = styled(Image)<{ empty: boolean }>`
     object-fit: ${(props) => (props.empty ? 'contain' : 'cover')};
     width: 100%;
     height: ${(props) => (props.empty ? '100%' : 'auto')};
-    background-color: ${(props) => (props.empty ? '#6B7F99' : 'none')};
+    background-color: ${(props) => (props.empty ? '#6B7F99' : 'unset')};
 `;
 
 export const Name = styled.p`

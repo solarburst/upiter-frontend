@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import * as S from './Nav.style';
 import { NavProps } from './Nav.types';
 
-export const Nav: React.FC<NavProps> = ({ items, vertical = false, ...props }) => {
+export const Nav: React.FC<NavProps> = ({ items, vertical = false, handleModal, ...props }) => {
     const pathname = usePathname();
 
     return (
@@ -14,7 +14,12 @@ export const Nav: React.FC<NavProps> = ({ items, vertical = false, ...props }) =
                 const isSelected = item.href === pathname;
 
                 return (
-                    <S.NavItem {...(item.href ? { as: Link, href: item.href } : {})} selected={isSelected} key={item.value}>
+                    <S.NavItem
+                        {...(item.href ? { as: Link, href: item.href } : {})}
+                        selected={isSelected}
+                        key={item.value}
+                        onClick={handleModal}
+                    >
                         {item.value}
                     </S.NavItem>
                 );

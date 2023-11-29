@@ -40,6 +40,10 @@ export const Products = styled(Swiper)`
         }
     }
 
+    .swiper-slide {
+        width: 282px;
+    }
+
     .swiper-slide img {
         height: 440px;
     }

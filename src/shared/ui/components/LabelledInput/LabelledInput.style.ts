@@ -24,3 +24,8 @@ export const LabelError = styled.span`
     font-size: 12px;
     line-height: 20px;
 `;
+
+export const Required = styled.span`
+    color: red;
+    margin-left: 4px;
+`;

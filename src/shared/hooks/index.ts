@@ -1,3 +1,4 @@
+export { useAsyncRouter } from './useAsyncRouter';
 export { useCurrency } from './useCurrency';
 export { useIsMobile } from './useIsMobile';
 export { useIsTablet } from './useIsTablet';

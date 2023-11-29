@@ -16,6 +16,7 @@ export const Root = styled.div<{ isOpen: boolean }>`
     background-color: ${({ theme }) => theme.color.bg3};
     z-index: 50;
     align-self: flex-start;
+    pointer-events: auto;
 `;
 
 export const Wrapper = styled.div`

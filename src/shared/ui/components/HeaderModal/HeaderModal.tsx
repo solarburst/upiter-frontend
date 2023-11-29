@@ -7,16 +7,16 @@ import ReactModal from 'react-modal';
 import { useDispatch } from 'react-redux';
 
 import { settingsSlice } from '@/entities';
-import { usePathname, useRouter } from '@/navigation';
+import { usePathname } from '@/navigation';
 import { Currency } from '@/shared/api/types';
-import { useAppSelector, useIsMobile } from '@/shared/hooks';
+import { useAppSelector, useAsyncRouter, useIsMobile } from '@/shared/hooks';
 import { CloseIcon, DropdownOption } from '@/shared/ui';
 
 import * as S from './HeaderModal.style';
 import { HeaderModalProps } from './HeaderModal.types';
 
 export const HeaderModal: React.FC<HeaderModalProps> = ({ isOpen, onClose, navItems, languages }) => {
-    const router = useRouter();
+    const router = useAsyncRouter();
     const pathname = usePathname();
     const [isPending, startTransition] = useTransition();
     const t = useTranslations('Common');
@@ -45,7 +45,8 @@ export const HeaderModal: React.FC<HeaderModalProps> = ({ isOpen, onClose, navIt
         if (!isPending) {
             const nextLocale = option.locale;
             startTransition(() => {
-                router.replace(pathname, { locale: nextLocale });
+                Cookies.set('NEXT_LOCALE', nextLocale!);
+                router.push(pathname, { scroll: false, locale: nextLocale });
             });
         }
     };
@@ -72,8 +73,13 @@ export const HeaderModal: React.FC<HeaderModalProps> = ({ isOpen, onClose, navIt
                 </S.ModalHeader>
             )}
             <S.ModalContent isMobile={isMobile}>
-                <S.ModalNavigation items={navItems} vertical={true} />
-                <S.ModalDropdown options={languages} value={selectedLanguage?.value} onChange={handleLanguageChange} />
+                <S.ModalNavigation items={navItems} vertical={true} handleModal={handleClose} />
+                <S.ModalDropdown
+                    options={languages}
+                    value={selectedLanguage?.value}
+                    onChange={handleLanguageChange}
+                    disabled={!router.isReady}
+                />
                 <S.CurrencyDropdown options={currenciesOptions} value={selectedCurrencyValue?.value} onChange={handleCurrencyChange} />
                 <S.Line />
                 <S.ModalSocials />

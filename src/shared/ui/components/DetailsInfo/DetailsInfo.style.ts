@@ -69,6 +69,19 @@ export const Info = styled.div`
     padding-top: 40px;
     border-top: 1px solid #ffffff1a;
     gap: 12px;
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: ${({ theme }) => theme.color.text1};
+        font-weight: 600;
+    }
+
+    p {
+        color: ${({ theme }) => theme.color.text1};
+    }
 `;
 
 export const InfoFeature = styled(Paragraph)`

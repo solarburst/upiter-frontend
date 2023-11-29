@@ -9,4 +9,3 @@ export { Header } from './Header';
 export { OrderModal } from './OrderModal';
 export { SimilarProducts } from './SimilarProducts';
 export { SocialsBanner } from './SocialsBanner';
-export { UiKit } from './UiKit';

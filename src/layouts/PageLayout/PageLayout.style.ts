@@ -11,13 +11,15 @@ export const Root = styled.div`
 export const Widgets = styled.div`
     display: flex;
     position: fixed;
-    bottom: 0px;
+    bottom: 12px;
     z-index: 3;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
     align-items: center;
     flex-wrap: wrap-reverse;
-    padding: 0 16px 12px;
+    padding: 0 16px;
     gap: 12px;
+    justify-content: flex-end;
+    pointer-events: none;
 `;

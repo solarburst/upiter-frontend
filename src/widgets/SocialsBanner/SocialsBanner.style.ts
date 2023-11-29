@@ -7,7 +7,9 @@ export const Root = styled.div`
     // position: absolute;
     // right: 16px;
     // bottom: 12px;
-    margin-left: auto;
+    // margin-left: auto;
+    // position: relative;
+    // right: 0;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -15,6 +17,7 @@ export const Root = styled.div`
     gap: 12px;
     overflow: hidden;
     z-index: 50;
+    pointer-events: auto;
 `;
 
 export const SocialsButton = styled.button`

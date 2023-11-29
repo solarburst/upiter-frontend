@@ -12,4 +12,5 @@ export interface RootProps {
 export interface NavProps {
     items: NavItem[];
     vertical?: boolean;
+    handleModal?: () => void;
 }

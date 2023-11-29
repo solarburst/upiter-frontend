@@ -5,16 +5,16 @@ import React, { useTransition } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { settingsSlice } from '@/entities';
-import { usePathname, useRouter } from '@/navigation';
+import { usePathname } from '@/navigation';
 import { Currency } from '@/shared/api/types';
-import { useAppSelector } from '@/shared/hooks';
+import { useAppSelector, useAsyncRouter } from '@/shared/hooks';
 import { DropdownOption } from '@/shared/ui';
 
 import * as S from './HeaderActions.style';
 import { HeaderActionsProps } from './HeaderActions.types';
 
 export const HeaderActions: React.FC<HeaderActionsProps> = ({ isTablet, languages }) => {
-    const router = useRouter();
+    const router = useAsyncRouter();
     const pathname = usePathname();
     const [isPending, startTransition] = useTransition();
 
@@ -41,7 +41,8 @@ export const HeaderActions: React.FC<HeaderActionsProps> = ({ isTablet, language
         if (!isPending) {
             const nextLocale = option.locale;
             startTransition(() => {
-                router.replace(pathname, { locale: nextLocale });
+                Cookies.set('NEXT_LOCALE', nextLocale!);
+                router.push(pathname, { scroll: false, locale: nextLocale });
             });
         }
     };
@@ -56,6 +57,7 @@ export const HeaderActions: React.FC<HeaderActionsProps> = ({ isTablet, language
                     trigger={currenciesOptions[0].value}
                     value={selectedCurrencyValue?.value}
                     onChange={handleCurrencyChange}
+                    disabled={!router.isReady}
                 />
             )}
             {/* {!isTablet && <S.ActionsSeparator />} */}

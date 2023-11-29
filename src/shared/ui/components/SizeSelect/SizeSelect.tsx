@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { productSlice } from '@/entities';
@@ -11,6 +11,10 @@ import { Size, SizeSelectProps } from './SizeSelect.types';
 export const SizeSelect: React.FC<SizeSelectProps> = ({ sizes }) => {
     const dispatch = useDispatch();
     const [selectedSize, setSelectedCateogry] = useState<Size | null>();
+
+    useEffect(() => {
+        dispatch(productSlice.actions.setSize(null));
+    }, []);
 
     const handleClick = (size: Size) => {
         setSelectedCateogry(size);
