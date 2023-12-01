@@ -77,10 +77,35 @@ export const Info = styled.div`
     h6 {
         color: ${({ theme }) => theme.color.text1};
         font-weight: 600;
+        font-size: 16px;
+    }
+
+    br {
+        display: none;
     }
 
     p {
         color: ${({ theme }) => theme.color.text1};
+    }
+
+    ul {
+        list-style-type: none;
+    }
+
+    li {
+        position: relative;
+        color: ${({ theme }) => theme.color.text1};
+        font-family: ${({ theme }) => theme.fontFamily.montserrat};
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 26px;
+        padding-left: 24px;
+
+        &::before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+        }
     }
 `;
 

@@ -30,10 +30,14 @@ export const NoImg = styled.div`
 
 export const CatalogImage = styled(Image)<{ empty: boolean }>`
     border-radius: 4px;
-    object-fit: ${(props) => (props.empty ? 'contain' : 'cover')};
+    object-fit: cover;
     width: 100%;
-    height: ${(props) => (props.empty ? '100%' : 'auto')};
+    // height: 100%;
     background-color: ${(props) => (props.empty ? '#6B7F99' : 'unset')};
+
+    @media screen and (max-width: 768px) {
+        height: 250px;
+    }
 `;
 
 export const Name = styled.p`

@@ -54,7 +54,7 @@ export const HeaderActions: React.FC<HeaderActionsProps> = ({ isTablet, language
             {!isTablet && currenciesOptions.length > 0 && (
                 <S.CurrencySelect
                     options={currenciesOptions}
-                    trigger={currenciesOptions[0].value}
+                    // trigger={currenciesOptions[0].value}
                     value={selectedCurrencyValue?.value}
                     onChange={handleCurrencyChange}
                     disabled={!router.isReady}

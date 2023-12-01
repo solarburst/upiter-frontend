@@ -22,7 +22,7 @@ export const CategoryButton = styled(Button)<{ selected: boolean }>`
         color: ${(props) => (props.selected ? props.theme.color.text1 : props.theme.color.text2)};
         border-bottom: ${(props) => (props.selected ? `1px solid ${props.theme.color.text1}` : 'none')};
         height: fit-content;
-        text-wrap: nowrap;
+        white-space: nowrap;
 
         &:hover {
             color: ${({ theme }) => theme.color.text1};

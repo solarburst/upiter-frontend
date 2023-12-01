@@ -24,6 +24,7 @@ export const Root = styled.div`
 
         img {
             max-width: 100%;
+            max-height: 820px;
             object-fit: cover;
 
             @media screen and (max-width: 768px) {

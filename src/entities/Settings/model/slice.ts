@@ -28,6 +28,7 @@ export const settingsSlice = createSlice({
             const settedCurrencyCookie = Cookies.get('SELECTED_CURRENCY');
             if (!settedCurrencyCookie) {
                 Cookies.set('SELECTED_CURRENCY', state.currencies[0].id.toString());
+                state.selectedCurrency = Number(Cookies.get('SELECTED_CURRENCY'));
             }
         },
         setSelectedCurrency: (state, action) => {

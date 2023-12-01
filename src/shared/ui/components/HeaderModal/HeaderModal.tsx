@@ -80,7 +80,12 @@ export const HeaderModal: React.FC<HeaderModalProps> = ({ isOpen, onClose, navIt
                     onChange={handleLanguageChange}
                     disabled={!router.isReady}
                 />
-                <S.CurrencyDropdown options={currenciesOptions} value={selectedCurrencyValue?.value} onChange={handleCurrencyChange} />
+                <S.CurrencyDropdown
+                    options={currenciesOptions}
+                    // trigger={currenciesOptions[0].value}
+                    value={selectedCurrencyValue?.value}
+                    onChange={handleCurrencyChange}
+                />
                 <S.Line />
                 <S.ModalSocials />
                 <S.ModalButton>{t('contacts.writeTo', { method: 'WhatsApp' })}</S.ModalButton>

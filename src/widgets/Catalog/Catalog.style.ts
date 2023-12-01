@@ -7,12 +7,13 @@ import { Button } from '@/shared/ui';
 import { PageSection } from '@/shared/ui';
 
 export const StyledPageSection = styled(PageSection)`
-    && (margin-top: 80px;)
+    margin-top: 80px;
 `;
 
 export const Categories = styled(CategorySelect)`
     align-self: flex-end;
     overflow-x: scroll;
+    scrollbar-width: none;
 
     &::-webkit-scrollbar {
         background-color: transparent;
@@ -38,7 +39,7 @@ export const Content = styled.div`
     justify-content: center;
 
     @media screen and (max-width: 768px) {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(auto-fill, 160px);
         gap: 24px 8px;
     }
 `;
